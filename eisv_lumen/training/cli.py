@@ -1,12 +1,13 @@
 """Training CLI entry point for EISV-Lumen teacher model pipeline.
 
-Provides subcommands for data preparation, training (placeholder),
-and Gate 1 evaluation.
+Provides subcommands for data preparation, LoRA fine-tuning, evaluation,
+and Gate 1 quality checks.
 
 Usage::
 
     python -m eisv_lumen.training.cli prepare --min-per-shape 50 --output-dir data/training
-    python -m eisv_lumen.training.cli train --config configs/teacher.yaml
+    python -m eisv_lumen.training.cli train --config configs/teacher.yaml --data-dir data/training
+    python -m eisv_lumen.training.cli eval --adapter outputs/teacher_lora/final_adapter --test-data data/training/test.json
     python -m eisv_lumen.training.cli gate1 --results outputs/eval_results.json
 """
 
@@ -16,6 +17,7 @@ import argparse
 import json
 import os
 import sys
+from dataclasses import asdict
 from typing import List
 
 from eisv_lumen.training.teacher_train import prepare_training_data
@@ -54,16 +56,64 @@ def cmd_prepare(args: argparse.Namespace) -> None:
 
 
 def cmd_train(args: argparse.Namespace) -> None:
-    """Placeholder for GPU-based teacher model training.
+    """Run LoRA fine-tuning on the teacher model.
 
-    Actual LoRA fine-tuning requires GPU hardware and is not yet
-    implemented in this CLI. See the training configuration module
-    for the planned approach.
+    Loads a :class:`TrainingConfig` (from YAML or defaults) and delegates
+    to :func:`train_teacher` which handles model loading, LoRA setup,
+    tokenization, and the Hugging Face Trainer loop.
+
+    Requires GPU hardware and ``torch``, ``transformers``, ``peft``
+    packages.  Exits with a helpful message if dependencies are missing.
     """
-    config_path = args.config
-    print(f"GPU training not yet implemented.")
-    print(f"Config would be loaded from: {config_path or '(default)'}")
-    print("Use the training notebook or a dedicated GPU script for actual training.")
+    from eisv_lumen.training.config import load_config
+    from eisv_lumen.training.trainer import train_teacher
+
+    config = load_config(args.config)
+    adapter_path = train_teacher(config, args.data_dir)
+    print(f"Training complete. Adapter saved to: {adapter_path}")
+
+
+def cmd_eval(args: argparse.Namespace) -> None:
+    """Evaluate a fine-tuned teacher model on a test set.
+
+    Loads the LoRA adapter, generates predictions for every test example,
+    and computes evaluation metrics.  Results are printed and optionally
+    saved to a JSON file.
+    """
+    from eisv_lumen.training.teacher_inference import evaluate_on_test_set
+
+    results = evaluate_on_test_set(
+        adapter_path=args.adapter,
+        test_data_path=args.test_data,
+        base_model=args.base_model,
+    )
+
+    print("=" * 60)
+    print("Teacher Evaluation Results")
+    print("=" * 60)
+    print(f"  Mean Coherence:   {results.mean_coherence:.4f}")
+    print(f"  Valid Rate:       {results.valid_rate:.4f}")
+    print(f"  Pattern Accuracy: {results.pattern_accuracy:.4f}")
+    print(f"  Total:            {results.n_total}")
+    print(f"  Valid:            {results.n_valid}")
+    print(f"  Diversity:        {results.diversity:.4f}")
+    print("=" * 60)
+
+    # Save to JSON
+    output_path = args.output
+    os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
+    results_dict = {
+        "mean_coherence": results.mean_coherence,
+        "valid_rate": results.valid_rate,
+        "pattern_accuracy": results.pattern_accuracy,
+        "n_total": results.n_total,
+        "n_valid": results.n_valid,
+        "per_shape_coherence": results.per_shape_coherence,
+        "diversity": results.diversity,
+    }
+    with open(output_path, "w") as f:
+        json.dump(results_dict, f, indent=2)
+    print(f"Results saved to: {output_path}")
 
 
 def cmd_gate1(args: argparse.Namespace) -> None:
@@ -142,14 +192,48 @@ def main() -> None:
     prep.set_defaults(func=cmd_prepare)
 
     # --- train ---
-    train = subparsers.add_parser("train", help="Train teacher model (placeholder)")
+    train = subparsers.add_parser("train", help="Fine-tune teacher model with LoRA")
     train.add_argument(
         "--config",
         type=str,
         default=None,
         help="Path to YAML training config file",
     )
+    train.add_argument(
+        "--data-dir",
+        type=str,
+        default="data/training",
+        help="Directory with train.json and val.json (default: data/training)",
+    )
     train.set_defaults(func=cmd_train)
+
+    # --- eval ---
+    eval_cmd = subparsers.add_parser("eval", help="Evaluate fine-tuned teacher model")
+    eval_cmd.add_argument(
+        "--adapter",
+        type=str,
+        required=True,
+        help="Path to saved LoRA adapter directory",
+    )
+    eval_cmd.add_argument(
+        "--test-data",
+        type=str,
+        required=True,
+        help="Path to test.json file",
+    )
+    eval_cmd.add_argument(
+        "--base-model",
+        type=str,
+        default="meta-llama/Llama-3.2-1B-Instruct",
+        help="Base model name (default: meta-llama/Llama-3.2-1B-Instruct)",
+    )
+    eval_cmd.add_argument(
+        "--output",
+        type=str,
+        default="outputs/eval_results.json",
+        help="Path to save evaluation results JSON (default: outputs/eval_results.json)",
+    )
+    eval_cmd.set_defaults(func=cmd_eval)
 
     # --- gate1 ---
     gate1 = subparsers.add_parser("gate1", help="Run Gate 1 quality check")
