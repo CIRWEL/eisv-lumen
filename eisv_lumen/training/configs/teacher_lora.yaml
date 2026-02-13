@@ -1,0 +1,22 @@
+# Teacher LoRA training configuration for EISV trajectory-expression mapping.
+# These are the default values; override as needed for experiments.
+
+model_name: "meta-llama/Llama-3.2-1B-Instruct"
+lora_rank: 16
+lora_alpha: 32
+lora_target_modules:
+  - "q_proj"
+  - "k_proj"
+  - "v_proj"
+  - "o_proj"
+lora_dropout: 0.05
+learning_rate: 0.0002
+num_epochs: 5
+batch_size: 4
+gradient_accumulation_steps: 4
+warmup_steps: 100
+max_seq_length: 512
+weight_decay: 0.01
+fp16: true
+seed: 42
+output_dir: "outputs/teacher_lora"
