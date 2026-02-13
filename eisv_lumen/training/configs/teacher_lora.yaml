@@ -1,20 +1,26 @@
 # Teacher LoRA training configuration for EISV trajectory-expression mapping.
-# These are the default values; override as needed for experiments.
+# Uses Qwen3-4B as the teacher model (ungated, Apache 2.0, best-in-class
+# structured output quality for its size).
 
-model_name: "meta-llama/Llama-3.2-1B-Instruct"
+model_name: "Qwen/Qwen3-4B"
 lora_rank: 16
 lora_alpha: 32
 lora_target_modules:
+  # Attention projections
   - "q_proj"
   - "k_proj"
   - "v_proj"
   - "o_proj"
+  # MLP projections (Qwen3 SwiGLU architecture)
+  - "gate_proj"
+  - "up_proj"
+  - "down_proj"
 lora_dropout: 0.05
-learning_rate: 0.0002
-num_epochs: 5
-batch_size: 4
-gradient_accumulation_steps: 4
-warmup_steps: 100
+learning_rate: 0.0001   # slightly lower for larger model
+num_epochs: 3           # 4B model learns faster, fewer epochs needed
+batch_size: 2           # smaller batch for 4B model on M4 Max
+gradient_accumulation_steps: 8  # effective batch size = 16
+warmup_steps: 50
 max_seq_length: 512
 weight_decay: 0.01
 fp16: true

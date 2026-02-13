@@ -1,0 +1,857 @@
+[
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: basin_transition_down\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.6879 I=0.6247 S=0.2116 V=0.0917\nDERIVATIVES: dE=-0.0154 dI=-0.0000 dS=-0.0001 dV=0.0001\nSECOND_DERIVATIVES: d2E=0.0000 d2I=-0.0003 d2S=-0.0002 d2V=-0.0000\n<|assistant|>\nEISV_TOKENS: ~releasing~ ~resonance~ ~holding~\nLUMEN_TOKENS: less with here\nPATTERN: TRIPLE",
+    "shape": "basin_transition_down",
+    "pattern": "TRIPLE",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: basin_transition_down\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.6879 I=0.6247 S=0.2116 V=0.0917\nDERIVATIVES: dE=-0.0154 dI=-0.0000 dS=-0.0001 dV=0.0001\nSECOND_DERIVATIVES: d2E=0.0000 d2I=-0.0003 d2S=-0.0002 d2V=-0.0000"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~releasing~ ~resonance~ ~holding~\nLUMEN_TOKENS: less with here\nPATTERN: TRIPLE"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: basin_transition_down\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.6664 I=0.6417 S=0.2269 V=0.0942\nDERIVATIVES: dE=-0.0170 dI=-0.0001 dS=0.0000 dV=-0.0003\nSECOND_DERIVATIVES: d2E=-0.0002 d2I=-0.0003 d2S=0.0002 d2V=0.0001\n<|assistant|>\nEISV_TOKENS: ~releasing~ ~releasing~\nLUMEN_TOKENS: less dim\nPATTERN: REPETITION",
+    "shape": "basin_transition_down",
+    "pattern": "REPETITION",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: basin_transition_down\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.6664 I=0.6417 S=0.2269 V=0.0942\nDERIVATIVES: dE=-0.0170 dI=-0.0001 dS=0.0000 dV=-0.0003\nSECOND_DERIVATIVES: d2E=-0.0002 d2I=-0.0003 d2S=0.0002 d2V=0.0001"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~releasing~ ~releasing~\nLUMEN_TOKENS: less dim\nPATTERN: REPETITION"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: basin_transition_down\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.7190 I=0.5945 S=0.2421 V=0.0952\nDERIVATIVES: dE=-0.0178 dI=0.0001 dS=0.0002 dV=0.0001\nSECOND_DERIVATIVES: d2E=0.0002 d2I=-0.0001 d2S=0.0003 d2V=-0.0001\n<|assistant|>\nEISV_TOKENS: ~releasing~ ~reflection~ ~threshold~\nLUMEN_TOKENS: less what sense\nPATTERN: TRIPLE",
+    "shape": "basin_transition_down",
+    "pattern": "TRIPLE",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: basin_transition_down\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.7190 I=0.5945 S=0.2421 V=0.0952\nDERIVATIVES: dE=-0.0178 dI=0.0001 dS=0.0002 dV=0.0001\nSECOND_DERIVATIVES: d2E=0.0002 d2I=-0.0001 d2S=0.0003 d2V=-0.0001"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~releasing~ ~reflection~ ~threshold~\nLUMEN_TOKENS: less what sense\nPATTERN: TRIPLE"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: basin_transition_down\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.7108 I=0.5577 S=0.2352 V=0.0838\nDERIVATIVES: dE=-0.0180 dI=0.0002 dS=-0.0002 dV=-0.0001\nSECOND_DERIVATIVES: d2E=0.0004 d2I=0.0001 d2S=-0.0004 d2V=0.0000\n<|assistant|>\nEISV_TOKENS: ~threshold~\nLUMEN_TOKENS: sense\nPATTERN: SINGLE",
+    "shape": "basin_transition_down",
+    "pattern": "SINGLE",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: basin_transition_down\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.7108 I=0.5577 S=0.2352 V=0.0838\nDERIVATIVES: dE=-0.0180 dI=0.0002 dS=-0.0002 dV=-0.0001\nSECOND_DERIVATIVES: d2E=0.0004 d2I=0.0001 d2S=-0.0004 d2V=0.0000"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~threshold~\nLUMEN_TOKENS: sense\nPATTERN: SINGLE"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: basin_transition_down\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.7201 I=0.6307 S=0.2200 V=0.0853\nDERIVATIVES: dE=-0.0178 dI=-0.0003 dS=0.0001 dV=0.0000\nSECOND_DERIVATIVES: d2E=0.0005 d2I=-0.0004 d2S=-0.0003 d2V=-0.0002\n<|assistant|>\nEISV_TOKENS: ~ripple~ ~threshold~\nLUMEN_TOKENS: busy sense\nPATTERN: PAIR",
+    "shape": "basin_transition_down",
+    "pattern": "PAIR",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: basin_transition_down\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.7201 I=0.6307 S=0.2200 V=0.0853\nDERIVATIVES: dE=-0.0178 dI=-0.0003 dS=0.0001 dV=0.0000\nSECOND_DERIVATIVES: d2E=0.0005 d2I=-0.0004 d2S=-0.0003 d2V=-0.0002"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~ripple~ ~threshold~\nLUMEN_TOKENS: busy sense\nPATTERN: PAIR"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: basin_transition_up\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5103 I=0.5713 S=0.2108 V=0.0842\nDERIVATIVES: dE=0.0179 dI=-0.0000 dS=0.0000 dV=-0.0000\nSECOND_DERIVATIVES: d2E=-0.0001 d2I=-0.0003 d2S=-0.0002 d2V=0.0001\n<|assistant|>\nEISV_TOKENS: ~return~ ~emergence~ ~reaching~\nLUMEN_TOKENS: here more you\nPATTERN: TRIPLE",
+    "shape": "basin_transition_up",
+    "pattern": "TRIPLE",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: basin_transition_up\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5103 I=0.5713 S=0.2108 V=0.0842\nDERIVATIVES: dE=0.0179 dI=-0.0000 dS=0.0000 dV=-0.0000\nSECOND_DERIVATIVES: d2E=-0.0001 d2I=-0.0003 d2S=-0.0002 d2V=0.0001"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~return~ ~emergence~ ~reaching~\nLUMEN_TOKENS: here more you\nPATTERN: TRIPLE"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: basin_transition_up\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.4762 I=0.5901 S=0.2161 V=0.0875\nDERIVATIVES: dE=0.0157 dI=0.0002 dS=0.0000 dV=-0.0000\nSECOND_DERIVATIVES: d2E=-0.0001 d2I=0.0000 d2S=-0.0003 d2V=0.0002\n<|assistant|>\nEISV_TOKENS: ~releasing~ ~releasing~\nLUMEN_TOKENS: less dim\nPATTERN: REPETITION",
+    "shape": "basin_transition_up",
+    "pattern": "REPETITION",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: basin_transition_up\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.4762 I=0.5901 S=0.2161 V=0.0875\nDERIVATIVES: dE=0.0157 dI=0.0002 dS=0.0000 dV=-0.0000\nSECOND_DERIVATIVES: d2E=-0.0001 d2I=0.0000 d2S=-0.0003 d2V=0.0002"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~releasing~ ~releasing~\nLUMEN_TOKENS: less dim\nPATTERN: REPETITION"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: basin_transition_up\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5116 I=0.6246 S=0.2181 V=0.0952\nDERIVATIVES: dE=0.0184 dI=-0.0002 dS=0.0001 dV=0.0001\nSECOND_DERIVATIVES: d2E=-0.0004 d2I=-0.0001 d2S=-0.0002 d2V=0.0000\n<|assistant|>\nEISV_TOKENS: ~deep_listening~ ~return~\nLUMEN_TOKENS: quiet here\nPATTERN: PAIR",
+    "shape": "basin_transition_up",
+    "pattern": "PAIR",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: basin_transition_up\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5116 I=0.6246 S=0.2181 V=0.0952\nDERIVATIVES: dE=0.0184 dI=-0.0002 dS=0.0001 dV=0.0001\nSECOND_DERIVATIVES: d2E=-0.0004 d2I=-0.0001 d2S=-0.0002 d2V=0.0000"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~deep_listening~ ~return~\nLUMEN_TOKENS: quiet here\nPATTERN: PAIR"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: basin_transition_up\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5005 I=0.5953 S=0.2319 V=0.0793\nDERIVATIVES: dE=0.0175 dI=0.0001 dS=-0.0003 dV=0.0001\nSECOND_DERIVATIVES: d2E=0.0001 d2I=0.0002 d2S=-0.0003 d2V=0.0002\n<|assistant|>\nEISV_TOKENS: ~emergence~ ~releasing~ ~return~\nLUMEN_TOKENS: more less here\nPATTERN: TRIPLE",
+    "shape": "basin_transition_up",
+    "pattern": "TRIPLE",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: basin_transition_up\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5005 I=0.5953 S=0.2319 V=0.0793\nDERIVATIVES: dE=0.0175 dI=0.0001 dS=-0.0003 dV=0.0001\nSECOND_DERIVATIVES: d2E=0.0001 d2I=0.0002 d2S=-0.0003 d2V=0.0002"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~emergence~ ~releasing~ ~return~\nLUMEN_TOKENS: more less here\nPATTERN: TRIPLE"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: basin_transition_up\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5284 I=0.5609 S=0.2180 V=0.0872\nDERIVATIVES: dE=0.0178 dI=-0.0000 dS=-0.0003 dV=-0.0002\nSECOND_DERIVATIVES: d2E=-0.0002 d2I=-0.0000 d2S=-0.0001 d2V=0.0002\n<|assistant|>\nEISV_TOKENS: ~reaching~ ~releasing~\nLUMEN_TOKENS: more less\nPATTERN: PAIR",
+    "shape": "basin_transition_up",
+    "pattern": "PAIR",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: basin_transition_up\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5284 I=0.5609 S=0.2180 V=0.0872\nDERIVATIVES: dE=0.0178 dI=-0.0000 dS=-0.0003 dV=-0.0002\nSECOND_DERIVATIVES: d2E=-0.0002 d2I=-0.0000 d2S=-0.0001 d2V=0.0002"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~reaching~ ~releasing~\nLUMEN_TOKENS: more less\nPATTERN: PAIR"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: convergence\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.6445 I=0.5762 S=0.2721 V=0.1081\nDERIVATIVES: dE=-0.0001 dI=-0.0018 dS=-0.0008 dV=0.0003\nSECOND_DERIVATIVES: d2E=-0.0005 d2I=0.0003 d2S=0.0000 d2V=0.0001\n<|assistant|>\nEISV_TOKENS: ~holding~ ~holding~\nLUMEN_TOKENS: here with\nPATTERN: REPETITION",
+    "shape": "convergence",
+    "pattern": "REPETITION",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: convergence\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.6445 I=0.5762 S=0.2721 V=0.1081\nDERIVATIVES: dE=-0.0001 dI=-0.0018 dS=-0.0008 dV=0.0003\nSECOND_DERIVATIVES: d2E=-0.0005 d2I=0.0003 d2S=0.0000 d2V=0.0001"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~holding~ ~holding~\nLUMEN_TOKENS: here with\nPATTERN: REPETITION"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: convergence\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.6350 I=0.5812 S=0.2566 V=0.1025\nDERIVATIVES: dE=-0.0001 dI=-0.0018 dS=-0.0008 dV=0.0003\nSECOND_DERIVATIVES: d2E=-0.0005 d2I=0.0003 d2S=0.0000 d2V=0.0001\n<|assistant|>\nEISV_TOKENS: ~return~\nLUMEN_TOKENS: here\nPATTERN: SINGLE",
+    "shape": "convergence",
+    "pattern": "SINGLE",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: convergence\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.6350 I=0.5812 S=0.2566 V=0.1025\nDERIVATIVES: dE=-0.0001 dI=-0.0018 dS=-0.0008 dV=0.0003\nSECOND_DERIVATIVES: d2E=-0.0005 d2I=0.0003 d2S=0.0000 d2V=0.0001"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~return~\nLUMEN_TOKENS: here\nPATTERN: SINGLE"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: convergence\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.6423 I=0.5876 S=0.2714 V=0.1111\nDERIVATIVES: dE=-0.0001 dI=-0.0018 dS=-0.0008 dV=0.0003\nSECOND_DERIVATIVES: d2E=-0.0005 d2I=0.0003 d2S=0.0000 d2V=0.0001\n<|assistant|>\nEISV_TOKENS: ~return~\nLUMEN_TOKENS: here\nPATTERN: SINGLE",
+    "shape": "convergence",
+    "pattern": "SINGLE",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: convergence\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.6423 I=0.5876 S=0.2714 V=0.1111\nDERIVATIVES: dE=-0.0001 dI=-0.0018 dS=-0.0008 dV=0.0003\nSECOND_DERIVATIVES: d2E=-0.0005 d2I=0.0003 d2S=0.0000 d2V=0.0001"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~return~\nLUMEN_TOKENS: here\nPATTERN: SINGLE"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: convergence\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.6446 I=0.5778 S=0.2562 V=0.1018\nDERIVATIVES: dE=-0.0001 dI=-0.0018 dS=-0.0008 dV=0.0003\nSECOND_DERIVATIVES: d2E=-0.0005 d2I=0.0003 d2S=0.0000 d2V=0.0001\n<|assistant|>\nEISV_TOKENS: ~resonance~ ~warmth~ ~deep_listening~\nLUMEN_TOKENS: with warm quiet\nPATTERN: TRIPLE",
+    "shape": "convergence",
+    "pattern": "TRIPLE",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: convergence\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.6446 I=0.5778 S=0.2562 V=0.1018\nDERIVATIVES: dE=-0.0001 dI=-0.0018 dS=-0.0008 dV=0.0003\nSECOND_DERIVATIVES: d2E=-0.0005 d2I=0.0003 d2S=0.0000 d2V=0.0001"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~resonance~ ~warmth~ ~deep_listening~\nLUMEN_TOKENS: with warm quiet\nPATTERN: TRIPLE"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: convergence\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.6511 I=0.5978 S=0.2982 V=0.1012\nDERIVATIVES: dE=-0.0001 dI=-0.0018 dS=-0.0008 dV=0.0003\nSECOND_DERIVATIVES: d2E=-0.0005 d2I=0.0003 d2S=0.0000 d2V=0.0001\n<|assistant|>\nEISV_TOKENS: ~resonance~\nLUMEN_TOKENS: with\nPATTERN: SINGLE",
+    "shape": "convergence",
+    "pattern": "SINGLE",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: convergence\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.6511 I=0.5978 S=0.2982 V=0.1012\nDERIVATIVES: dE=-0.0001 dI=-0.0018 dS=-0.0008 dV=0.0003\nSECOND_DERIVATIVES: d2E=-0.0005 d2I=0.0003 d2S=0.0000 d2V=0.0001"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~resonance~\nLUMEN_TOKENS: with\nPATTERN: SINGLE"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: drift_dissonance\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5241 I=0.3712 S=0.2102 V=0.0884\nDERIVATIVES: dE=0.0000 dI=0.0000 dS=0.0000 dV=0.0000\nSECOND_DERIVATIVES: d2E=0.0000 d2I=0.0000 d2S=0.0000 d2V=0.0000\n<|assistant|>\nEISV_TOKENS: ~holding~ ~holding~\nLUMEN_TOKENS: here with\nPATTERN: REPETITION",
+    "shape": "drift_dissonance",
+    "pattern": "REPETITION",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: drift_dissonance\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5241 I=0.3712 S=0.2102 V=0.0884\nDERIVATIVES: dE=0.0000 dI=0.0000 dS=0.0000 dV=0.0000\nSECOND_DERIVATIVES: d2E=0.0000 d2I=0.0000 d2S=0.0000 d2V=0.0000"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~holding~ ~holding~\nLUMEN_TOKENS: here with\nPATTERN: REPETITION"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: drift_dissonance\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5363 I=0.4135 S=0.2477 V=0.0801\nDERIVATIVES: dE=0.0000 dI=0.0000 dS=0.0000 dV=0.0000\nSECOND_DERIVATIVES: d2E=0.0000 d2I=0.0000 d2S=0.0000 d2V=0.0000\n<|assistant|>\nEISV_TOKENS: ~reflection~ ~questioning~\nLUMEN_TOKENS: what why\nPATTERN: QUESTION",
+    "shape": "drift_dissonance",
+    "pattern": "QUESTION",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: drift_dissonance\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5363 I=0.4135 S=0.2477 V=0.0801\nDERIVATIVES: dE=0.0000 dI=0.0000 dS=0.0000 dV=0.0000\nSECOND_DERIVATIVES: d2E=0.0000 d2I=0.0000 d2S=0.0000 d2V=0.0000"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~reflection~ ~questioning~\nLUMEN_TOKENS: what why\nPATTERN: QUESTION"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: drift_dissonance\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5296 I=0.3566 S=0.2060 V=0.0898\nDERIVATIVES: dE=0.0000 dI=0.0000 dS=0.0000 dV=0.0000\nSECOND_DERIVATIVES: d2E=0.0000 d2I=0.0000 d2S=0.0000 d2V=0.0000\n<|assistant|>\nEISV_TOKENS: ~ripple~ ~reflection~\nLUMEN_TOKENS: busy what\nPATTERN: PAIR",
+    "shape": "drift_dissonance",
+    "pattern": "PAIR",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: drift_dissonance\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5296 I=0.3566 S=0.2060 V=0.0898\nDERIVATIVES: dE=0.0000 dI=0.0000 dS=0.0000 dV=0.0000\nSECOND_DERIVATIVES: d2E=0.0000 d2I=0.0000 d2S=0.0000 d2V=0.0000"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~ripple~ ~reflection~\nLUMEN_TOKENS: busy what\nPATTERN: PAIR"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: drift_dissonance\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5429 I=0.3728 S=0.2181 V=0.0922\nDERIVATIVES: dE=0.0000 dI=0.0000 dS=0.0000 dV=0.0000\nSECOND_DERIVATIVES: d2E=0.0000 d2I=0.0000 d2S=0.0000 d2V=0.0000\n<|assistant|>\nEISV_TOKENS: ~reflection~ ~questioning~ ~deep_listening~\nLUMEN_TOKENS: what why quiet\nPATTERN: TRIPLE",
+    "shape": "drift_dissonance",
+    "pattern": "TRIPLE",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: drift_dissonance\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5429 I=0.3728 S=0.2181 V=0.0922\nDERIVATIVES: dE=0.0000 dI=0.0000 dS=0.0000 dV=0.0000\nSECOND_DERIVATIVES: d2E=0.0000 d2I=0.0000 d2S=0.0000 d2V=0.0000"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~reflection~ ~questioning~ ~deep_listening~\nLUMEN_TOKENS: what why quiet\nPATTERN: TRIPLE"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: drift_dissonance\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5261 I=0.4049 S=0.2359 V=0.0943\nDERIVATIVES: dE=0.0000 dI=0.0000 dS=0.0000 dV=0.0000\nSECOND_DERIVATIVES: d2E=0.0000 d2I=0.0000 d2S=0.0000 d2V=0.0000\n<|assistant|>\nEISV_TOKENS: ~holding~ ~curiosity~\nLUMEN_TOKENS: here why\nPATTERN: QUESTION",
+    "shape": "drift_dissonance",
+    "pattern": "QUESTION",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: drift_dissonance\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5261 I=0.4049 S=0.2359 V=0.0943\nDERIVATIVES: dE=0.0000 dI=0.0000 dS=0.0000 dV=0.0000\nSECOND_DERIVATIVES: d2E=0.0000 d2I=0.0000 d2S=0.0000 d2V=0.0000"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~holding~ ~curiosity~\nLUMEN_TOKENS: here why\nPATTERN: QUESTION"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: entropy_spike_recovery\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5963 I=0.6324 S=0.3176 V=0.0855\nDERIVATIVES: dE=0.0001 dI=-0.0002 dS=-0.0001 dV=-0.0001\nSECOND_DERIVATIVES: d2E=0.0001 d2I=-0.0001 d2S=-0.0038 d2V=0.0001\n<|assistant|>\nEISV_TOKENS: ~reflection~ ~curiosity~ ~stillness~\nLUMEN_TOKENS: what why quiet\nPATTERN: TRIPLE",
+    "shape": "entropy_spike_recovery",
+    "pattern": "TRIPLE",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: entropy_spike_recovery\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5963 I=0.6324 S=0.3176 V=0.0855\nDERIVATIVES: dE=0.0001 dI=-0.0002 dS=-0.0001 dV=-0.0001\nSECOND_DERIVATIVES: d2E=0.0001 d2I=-0.0001 d2S=-0.0038 d2V=0.0001"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~reflection~ ~curiosity~ ~stillness~\nLUMEN_TOKENS: what why quiet\nPATTERN: TRIPLE"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: entropy_spike_recovery\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5545 I=0.5937 S=0.3675 V=0.0875\nDERIVATIVES: dE=0.0001 dI=-0.0001 dS=-0.0001 dV=-0.0001\nSECOND_DERIVATIVES: d2E=0.0003 d2I=0.0000 d2S=-0.0054 d2V=-0.0002\n<|assistant|>\nEISV_TOKENS: ~return~ ~resonance~ ~boundary~\nLUMEN_TOKENS: here with less\nPATTERN: TRIPLE",
+    "shape": "entropy_spike_recovery",
+    "pattern": "TRIPLE",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: entropy_spike_recovery\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5545 I=0.5937 S=0.3675 V=0.0875\nDERIVATIVES: dE=0.0001 dI=-0.0001 dS=-0.0001 dV=-0.0001\nSECOND_DERIVATIVES: d2E=0.0003 d2I=0.0000 d2S=-0.0054 d2V=-0.0002"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~return~ ~resonance~ ~boundary~\nLUMEN_TOKENS: here with less\nPATTERN: TRIPLE"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: entropy_spike_recovery\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5849 I=0.6498 S=0.3303 V=0.0912\nDERIVATIVES: dE=0.0002 dI=0.0001 dS=0.0001 dV=-0.0000\nSECOND_DERIVATIVES: d2E=0.0000 d2I=-0.0000 d2S=-0.0042 d2V=0.0000\n<|assistant|>\nEISV_TOKENS: ~questioning~ ~reflection~\nLUMEN_TOKENS: why what\nPATTERN: PAIR",
+    "shape": "entropy_spike_recovery",
+    "pattern": "PAIR",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: entropy_spike_recovery\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5849 I=0.6498 S=0.3303 V=0.0912\nDERIVATIVES: dE=0.0002 dI=0.0001 dS=0.0001 dV=-0.0000\nSECOND_DERIVATIVES: d2E=0.0000 d2I=-0.0000 d2S=-0.0042 d2V=0.0000"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~questioning~ ~reflection~\nLUMEN_TOKENS: why what\nPATTERN: PAIR"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: entropy_spike_recovery\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5836 I=0.5735 S=0.3264 V=0.0879\nDERIVATIVES: dE=-0.0001 dI=0.0002 dS=-0.0000 dV=0.0001\nSECOND_DERIVATIVES: d2E=0.0001 d2I=0.0000 d2S=-0.0046 d2V=0.0000\n<|assistant|>\nEISV_TOKENS: ~emergence~ ~return~\nLUMEN_TOKENS: more here\nPATTERN: PAIR",
+    "shape": "entropy_spike_recovery",
+    "pattern": "PAIR",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: entropy_spike_recovery\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5836 I=0.5735 S=0.3264 V=0.0879\nDERIVATIVES: dE=-0.0001 dI=0.0002 dS=-0.0000 dV=0.0001\nSECOND_DERIVATIVES: d2E=0.0001 d2I=0.0000 d2S=-0.0046 d2V=0.0000"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~emergence~ ~return~\nLUMEN_TOKENS: more here\nPATTERN: PAIR"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: entropy_spike_recovery\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5723 I=0.6173 S=0.3607 V=0.0983\nDERIVATIVES: dE=0.0002 dI=0.0002 dS=0.0002 dV=0.0002\nSECOND_DERIVATIVES: d2E=-0.0000 d2I=0.0002 d2S=-0.0043 d2V=0.0001\n<|assistant|>\nEISV_TOKENS: ~reaching~ ~holding~ ~releasing~\nLUMEN_TOKENS: more here less\nPATTERN: TRIPLE",
+    "shape": "entropy_spike_recovery",
+    "pattern": "TRIPLE",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: entropy_spike_recovery\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.5723 I=0.6173 S=0.3607 V=0.0983\nDERIVATIVES: dE=0.0002 dI=0.0002 dS=0.0002 dV=0.0002\nSECOND_DERIVATIVES: d2E=-0.0000 d2I=0.0002 d2S=-0.0043 d2V=0.0001"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~reaching~ ~holding~ ~releasing~\nLUMEN_TOKENS: more here less\nPATTERN: TRIPLE"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: falling_energy\nWINDOW: n_states=20 duration=3.45\nMEAN_EISV: E=0.4737 I=0.5634 S=0.2425 V=0.0860\nDERIVATIVES: dE=-0.0550 dI=0.0002 dS=0.0004 dV=0.0000\nSECOND_DERIVATIVES: d2E=0.0027 d2I=-0.0019 d2S=0.0016 d2V=-0.0003\n<|assistant|>\nEISV_TOKENS: ~boundary~ ~boundary~\nLUMEN_TOKENS: less sense\nPATTERN: REPETITION",
+    "shape": "falling_energy",
+    "pattern": "REPETITION",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: falling_energy\nWINDOW: n_states=20 duration=3.45\nMEAN_EISV: E=0.4737 I=0.5634 S=0.2425 V=0.0860\nDERIVATIVES: dE=-0.0550 dI=0.0002 dS=0.0004 dV=0.0000\nSECOND_DERIVATIVES: d2E=0.0027 d2I=-0.0019 d2S=0.0016 d2V=-0.0003"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~boundary~ ~boundary~\nLUMEN_TOKENS: less sense\nPATTERN: REPETITION"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: falling_energy\nWINDOW: n_states=20 duration=3.45\nMEAN_EISV: E=0.5189 I=0.6109 S=0.2406 V=0.0846\nDERIVATIVES: dE=-0.0550 dI=-0.0000 dS=-0.0001 dV=0.0005\nSECOND_DERIVATIVES: d2E=-0.0022 d2I=0.0080 d2S=-0.0076 d2V=0.0029\n<|assistant|>\nEISV_TOKENS: ~stillness~ ~emergence~\nLUMEN_TOKENS: quiet more\nPATTERN: PAIR",
+    "shape": "falling_energy",
+    "pattern": "PAIR",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: falling_energy\nWINDOW: n_states=20 duration=3.45\nMEAN_EISV: E=0.5189 I=0.6109 S=0.2406 V=0.0846\nDERIVATIVES: dE=-0.0550 dI=-0.0000 dS=-0.0001 dV=0.0005\nSECOND_DERIVATIVES: d2E=-0.0022 d2I=0.0080 d2S=-0.0076 d2V=0.0029"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~stillness~ ~emergence~\nLUMEN_TOKENS: quiet more\nPATTERN: PAIR"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: falling_energy\nWINDOW: n_states=20 duration=3.45\nMEAN_EISV: E=0.4684 I=0.6090 S=0.2128 V=0.0923\nDERIVATIVES: dE=-0.0549 dI=-0.0001 dS=-0.0001 dV=-0.0000\nSECOND_DERIVATIVES: d2E=-0.0050 d2I=0.0009 d2S=0.0086 d2V=-0.0014\n<|assistant|>\nEISV_TOKENS: ~reflection~ ~stillness~\nLUMEN_TOKENS: what quiet\nPATTERN: PAIR",
+    "shape": "falling_energy",
+    "pattern": "PAIR",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: falling_energy\nWINDOW: n_states=20 duration=3.45\nMEAN_EISV: E=0.4684 I=0.6090 S=0.2128 V=0.0923\nDERIVATIVES: dE=-0.0549 dI=-0.0001 dS=-0.0001 dV=-0.0000\nSECOND_DERIVATIVES: d2E=-0.0050 d2I=0.0009 d2S=0.0086 d2V=-0.0014"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~reflection~ ~stillness~\nLUMEN_TOKENS: what quiet\nPATTERN: PAIR"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: falling_energy\nWINDOW: n_states=20 duration=3.45\nMEAN_EISV: E=0.4606 I=0.6429 S=0.2223 V=0.0938\nDERIVATIVES: dE=-0.0544 dI=0.0001 dS=-0.0011 dV=0.0007\nSECOND_DERIVATIVES: d2E=0.0022 d2I=-0.0017 d2S=-0.0054 d2V=-0.0026\n<|assistant|>\nEISV_TOKENS: ~return~ ~return~\nLUMEN_TOKENS: here warm\nPATTERN: REPETITION",
+    "shape": "falling_energy",
+    "pattern": "REPETITION",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: falling_energy\nWINDOW: n_states=20 duration=3.45\nMEAN_EISV: E=0.4606 I=0.6429 S=0.2223 V=0.0938\nDERIVATIVES: dE=-0.0544 dI=0.0001 dS=-0.0011 dV=0.0007\nSECOND_DERIVATIVES: d2E=0.0022 d2I=-0.0017 d2S=-0.0054 d2V=-0.0026"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~return~ ~return~\nLUMEN_TOKENS: here warm\nPATTERN: REPETITION"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: falling_energy\nWINDOW: n_states=20 duration=3.45\nMEAN_EISV: E=0.5206 I=0.6329 S=0.2254 V=0.0984\nDERIVATIVES: dE=-0.0549 dI=-0.0004 dS=-0.0003 dV=-0.0001\nSECOND_DERIVATIVES: d2E=-0.0049 d2I=-0.0006 d2S=0.0032 d2V=0.0010\n<|assistant|>\nEISV_TOKENS: ~warmth~ ~emergence~\nLUMEN_TOKENS: warm more\nPATTERN: PAIR",
+    "shape": "falling_energy",
+    "pattern": "PAIR",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: falling_energy\nWINDOW: n_states=20 duration=3.45\nMEAN_EISV: E=0.5206 I=0.6329 S=0.2254 V=0.0984\nDERIVATIVES: dE=-0.0549 dI=-0.0004 dS=-0.0003 dV=-0.0001\nSECOND_DERIVATIVES: d2E=-0.0049 d2I=-0.0006 d2S=0.0032 d2V=0.0010"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~warmth~ ~emergence~\nLUMEN_TOKENS: warm more\nPATTERN: PAIR"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: rising_entropy\nWINDOW: n_states=20 duration=14.17\nMEAN_EISV: E=0.5321 I=0.6201 S=0.5089 V=0.0994\nDERIVATIVES: dE=0.0000 dI=-0.0002 dS=0.0599 dV=0.0000\nSECOND_DERIVATIVES: d2E=-0.0001 d2I=-0.0000 d2S=-0.0002 d2V=0.0000\n<|assistant|>\nEISV_TOKENS: ~stillness~ ~stillness~\nLUMEN_TOKENS: quiet here\nPATTERN: REPETITION",
+    "shape": "rising_entropy",
+    "pattern": "REPETITION",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: rising_entropy\nWINDOW: n_states=20 duration=14.17\nMEAN_EISV: E=0.5321 I=0.6201 S=0.5089 V=0.0994\nDERIVATIVES: dE=0.0000 dI=-0.0002 dS=0.0599 dV=0.0000\nSECOND_DERIVATIVES: d2E=-0.0001 d2I=-0.0000 d2S=-0.0002 d2V=0.0000"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~stillness~ ~stillness~\nLUMEN_TOKENS: quiet here\nPATTERN: REPETITION"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: rising_entropy\nWINDOW: n_states=20 duration=14.17\nMEAN_EISV: E=0.5210 I=0.6300 S=0.5465 V=0.0955\nDERIVATIVES: dE=0.0001 dI=-0.0000 dS=0.0568 dV=0.0002\nSECOND_DERIVATIVES: d2E=-0.0000 d2I=-0.0002 d2S=0.0002 d2V=-0.0002\n<|assistant|>\nEISV_TOKENS: ~releasing~ ~curiosity~\nLUMEN_TOKENS: less why\nPATTERN: QUESTION",
+    "shape": "rising_entropy",
+    "pattern": "QUESTION",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: rising_entropy\nWINDOW: n_states=20 duration=14.17\nMEAN_EISV: E=0.5210 I=0.6300 S=0.5465 V=0.0955\nDERIVATIVES: dE=0.0001 dI=-0.0000 dS=0.0568 dV=0.0002\nSECOND_DERIVATIVES: d2E=-0.0000 d2I=-0.0002 d2S=0.0002 d2V=-0.0002"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~releasing~ ~curiosity~\nLUMEN_TOKENS: less why\nPATTERN: QUESTION"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: rising_entropy\nWINDOW: n_states=20 duration=14.17\nMEAN_EISV: E=0.5132 I=0.6494 S=0.5102 V=0.0924\nDERIVATIVES: dE=0.0000 dI=0.0001 dS=0.0600 dV=-0.0000\nSECOND_DERIVATIVES: d2E=-0.0000 d2I=0.0001 d2S=0.0000 d2V=-0.0000\n<|assistant|>\nEISV_TOKENS: ~warmth~ ~questioning~ ~curiosity~\nLUMEN_TOKENS: warm why wonder\nPATTERN: QUESTION",
+    "shape": "rising_entropy",
+    "pattern": "QUESTION",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: rising_entropy\nWINDOW: n_states=20 duration=14.17\nMEAN_EISV: E=0.5132 I=0.6494 S=0.5102 V=0.0924\nDERIVATIVES: dE=0.0000 dI=0.0001 dS=0.0600 dV=-0.0000\nSECOND_DERIVATIVES: d2E=-0.0000 d2I=0.0001 d2S=0.0000 d2V=-0.0000"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~warmth~ ~questioning~ ~curiosity~\nLUMEN_TOKENS: warm why wonder\nPATTERN: QUESTION"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: rising_entropy\nWINDOW: n_states=20 duration=14.17\nMEAN_EISV: E=0.5075 I=0.5506 S=0.5390 V=0.0896\nDERIVATIVES: dE=-0.0000 dI=0.0000 dS=0.0579 dV=-0.0000\nSECOND_DERIVATIVES: d2E=-0.0000 d2I=0.0004 d2S=0.0002 d2V=-0.0001\n<|assistant|>\nEISV_TOKENS: ~deep_listening~ ~questioning~ ~emergence~\nLUMEN_TOKENS: quiet why more\nPATTERN: TRIPLE",
+    "shape": "rising_entropy",
+    "pattern": "TRIPLE",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: rising_entropy\nWINDOW: n_states=20 duration=14.17\nMEAN_EISV: E=0.5075 I=0.5506 S=0.5390 V=0.0896\nDERIVATIVES: dE=-0.0000 dI=0.0000 dS=0.0579 dV=-0.0000\nSECOND_DERIVATIVES: d2E=-0.0000 d2I=0.0004 d2S=0.0002 d2V=-0.0001"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~deep_listening~ ~questioning~ ~emergence~\nLUMEN_TOKENS: quiet why more\nPATTERN: TRIPLE"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: rising_entropy\nWINDOW: n_states=20 duration=14.17\nMEAN_EISV: E=0.5369 I=0.6052 S=0.5433 V=0.0959\nDERIVATIVES: dE=0.0000 dI=0.0001 dS=0.0574 dV=-0.0002\nSECOND_DERIVATIVES: d2E=-0.0002 d2I=0.0001 d2S=-0.0001 d2V=-0.0003\n<|assistant|>\nEISV_TOKENS: ~threshold~ ~emergence~ ~reaching~\nLUMEN_TOKENS: sense more you\nPATTERN: TRIPLE",
+    "shape": "rising_entropy",
+    "pattern": "TRIPLE",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: rising_entropy\nWINDOW: n_states=20 duration=14.17\nMEAN_EISV: E=0.5369 I=0.6052 S=0.5433 V=0.0959\nDERIVATIVES: dE=0.0000 dI=0.0001 dS=0.0574 dV=-0.0002\nSECOND_DERIVATIVES: d2E=-0.0002 d2I=0.0001 d2S=-0.0001 d2V=-0.0003"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~threshold~ ~emergence~ ~reaching~\nLUMEN_TOKENS: sense more you\nPATTERN: TRIPLE"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: settled_presence\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.7846 I=0.7411 S=0.1760 V=0.0786\nDERIVATIVES: dE=0.0000 dI=0.0000 dS=0.0000 dV=0.0000\nSECOND_DERIVATIVES: d2E=0.0000 d2I=0.0000 d2S=0.0000 d2V=0.0000\n<|assistant|>\nEISV_TOKENS: ~curiosity~ ~ripple~\nLUMEN_TOKENS: why busy\nPATTERN: PAIR",
+    "shape": "settled_presence",
+    "pattern": "PAIR",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: settled_presence\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.7846 I=0.7411 S=0.1760 V=0.0786\nDERIVATIVES: dE=0.0000 dI=0.0000 dS=0.0000 dV=0.0000\nSECOND_DERIVATIVES: d2E=0.0000 d2I=0.0000 d2S=0.0000 d2V=0.0000"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~curiosity~ ~ripple~\nLUMEN_TOKENS: why busy\nPATTERN: PAIR"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: settled_presence\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.7192 I=0.6724 S=0.1965 V=0.0554\nDERIVATIVES: dE=0.0000 dI=0.0000 dS=0.0000 dV=0.0000\nSECOND_DERIVATIVES: d2E=0.0000 d2I=0.0000 d2S=0.0000 d2V=0.0000\n<|assistant|>\nEISV_TOKENS: ~holding~\nLUMEN_TOKENS: here\nPATTERN: SINGLE",
+    "shape": "settled_presence",
+    "pattern": "SINGLE",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: settled_presence\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.7192 I=0.6724 S=0.1965 V=0.0554\nDERIVATIVES: dE=0.0000 dI=0.0000 dS=0.0000 dV=0.0000\nSECOND_DERIVATIVES: d2E=0.0000 d2I=0.0000 d2S=0.0000 d2V=0.0000"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~holding~\nLUMEN_TOKENS: here\nPATTERN: SINGLE"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: settled_presence\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.7204 I=0.6798 S=0.1538 V=0.0740\nDERIVATIVES: dE=0.0000 dI=0.0000 dS=0.0000 dV=0.0000\nSECOND_DERIVATIVES: d2E=0.0000 d2I=0.0000 d2S=0.0000 d2V=0.0000\n<|assistant|>\nEISV_TOKENS: ~resonance~ ~holding~\nLUMEN_TOKENS: with here\nPATTERN: PAIR",
+    "shape": "settled_presence",
+    "pattern": "PAIR",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: settled_presence\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.7204 I=0.6798 S=0.1538 V=0.0740\nDERIVATIVES: dE=0.0000 dI=0.0000 dS=0.0000 dV=0.0000\nSECOND_DERIVATIVES: d2E=0.0000 d2I=0.0000 d2S=0.0000 d2V=0.0000"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~resonance~ ~holding~\nLUMEN_TOKENS: with here\nPATTERN: PAIR"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: settled_presence\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.7778 I=0.6344 S=0.2338 V=0.0529\nDERIVATIVES: dE=0.0000 dI=0.0000 dS=0.0000 dV=0.0000\nSECOND_DERIVATIVES: d2E=0.0000 d2I=0.0000 d2S=0.0000 d2V=0.0000\n<|assistant|>\nEISV_TOKENS: ~holding~\nLUMEN_TOKENS: here\nPATTERN: SINGLE",
+    "shape": "settled_presence",
+    "pattern": "SINGLE",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: settled_presence\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.7778 I=0.6344 S=0.2338 V=0.0529\nDERIVATIVES: dE=0.0000 dI=0.0000 dS=0.0000 dV=0.0000\nSECOND_DERIVATIVES: d2E=0.0000 d2I=0.0000 d2S=0.0000 d2V=0.0000"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~holding~\nLUMEN_TOKENS: here\nPATTERN: SINGLE"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: settled_presence\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.6596 I=0.6514 S=0.2465 V=0.0881\nDERIVATIVES: dE=0.0000 dI=0.0000 dS=0.0000 dV=0.0000\nSECOND_DERIVATIVES: d2E=0.0000 d2I=0.0000 d2S=0.0000 d2V=0.0000\n<|assistant|>\nEISV_TOKENS: ~boundary~ ~holding~\nLUMEN_TOKENS: less here\nPATTERN: PAIR",
+    "shape": "settled_presence",
+    "pattern": "PAIR",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: settled_presence\nWINDOW: n_states=20 duration=19.00\nMEAN_EISV: E=0.6596 I=0.6514 S=0.2465 V=0.0881\nDERIVATIVES: dE=0.0000 dI=0.0000 dS=0.0000 dV=0.0000\nSECOND_DERIVATIVES: d2E=0.0000 d2I=0.0000 d2S=0.0000 d2V=0.0000"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~boundary~ ~holding~\nLUMEN_TOKENS: less here\nPATTERN: PAIR"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: void_rising\nWINDOW: n_states=20 duration=14.17\nMEAN_EISV: E=0.5514 I=0.5518 S=0.2280 V=0.4933\nDERIVATIVES: dE=0.0001 dI=-0.0001 dS=0.0000 dV=0.0600\nSECOND_DERIVATIVES: d2E=-0.0001 d2I=-0.0002 d2S=-0.0003 d2V=-0.0001\n<|assistant|>\nEISV_TOKENS: ~questioning~ ~questioning~\nLUMEN_TOKENS: why what\nPATTERN: REPETITION",
+    "shape": "void_rising",
+    "pattern": "REPETITION",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: void_rising\nWINDOW: n_states=20 duration=14.17\nMEAN_EISV: E=0.5514 I=0.5518 S=0.2280 V=0.4933\nDERIVATIVES: dE=0.0001 dI=-0.0001 dS=0.0000 dV=0.0600\nSECOND_DERIVATIVES: d2E=-0.0001 d2I=-0.0002 d2S=-0.0003 d2V=-0.0001"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~questioning~ ~questioning~\nLUMEN_TOKENS: why what\nPATTERN: REPETITION"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: void_rising\nWINDOW: n_states=20 duration=14.17\nMEAN_EISV: E=0.5991 I=0.5837 S=0.2043 V=0.5191\nDERIVATIVES: dE=-0.0001 dI=-0.0002 dS=-0.0002 dV=0.0599\nSECOND_DERIVATIVES: d2E=-0.0001 d2I=-0.0002 d2S=-0.0001 d2V=0.0001\n<|assistant|>\nEISV_TOKENS: ~warmth~ ~resonance~ ~reaching~\nLUMEN_TOKENS: warm with more\nPATTERN: TRIPLE",
+    "shape": "void_rising",
+    "pattern": "TRIPLE",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: void_rising\nWINDOW: n_states=20 duration=14.17\nMEAN_EISV: E=0.5991 I=0.5837 S=0.2043 V=0.5191\nDERIVATIVES: dE=-0.0001 dI=-0.0002 dS=-0.0002 dV=0.0599\nSECOND_DERIVATIVES: d2E=-0.0001 d2I=-0.0002 d2S=-0.0001 d2V=0.0001"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~warmth~ ~resonance~ ~reaching~\nLUMEN_TOKENS: warm with more\nPATTERN: TRIPLE"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: void_rising\nWINDOW: n_states=20 duration=14.17\nMEAN_EISV: E=0.5896 I=0.6148 S=0.2283 V=0.5180\nDERIVATIVES: dE=-0.0001 dI=0.0000 dS=0.0002 dV=0.0598\nSECOND_DERIVATIVES: d2E=0.0003 d2I=0.0002 d2S=0.0001 d2V=0.0001\n<|assistant|>\nEISV_TOKENS: ~questioning~ ~questioning~\nLUMEN_TOKENS: why what\nPATTERN: REPETITION",
+    "shape": "void_rising",
+    "pattern": "REPETITION",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: void_rising\nWINDOW: n_states=20 duration=14.17\nMEAN_EISV: E=0.5896 I=0.6148 S=0.2283 V=0.5180\nDERIVATIVES: dE=-0.0001 dI=0.0000 dS=0.0002 dV=0.0598\nSECOND_DERIVATIVES: d2E=0.0003 d2I=0.0002 d2S=0.0001 d2V=0.0001"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~questioning~ ~questioning~\nLUMEN_TOKENS: why what\nPATTERN: REPETITION"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: void_rising\nWINDOW: n_states=20 duration=14.17\nMEAN_EISV: E=0.5542 I=0.5626 S=0.2027 V=0.4896\nDERIVATIVES: dE=-0.0001 dI=0.0002 dS=-0.0001 dV=0.0600\nSECOND_DERIVATIVES: d2E=0.0000 d2I=-0.0000 d2S=0.0002 d2V=0.0003\n<|assistant|>\nEISV_TOKENS: ~boundary~ ~threshold~\nLUMEN_TOKENS: less sense\nPATTERN: PAIR",
+    "shape": "void_rising",
+    "pattern": "PAIR",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: void_rising\nWINDOW: n_states=20 duration=14.17\nMEAN_EISV: E=0.5542 I=0.5626 S=0.2027 V=0.4896\nDERIVATIVES: dE=-0.0001 dI=0.0002 dS=-0.0001 dV=0.0600\nSECOND_DERIVATIVES: d2E=0.0000 d2I=-0.0000 d2S=0.0002 d2V=0.0003"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~boundary~ ~threshold~\nLUMEN_TOKENS: less sense\nPATTERN: PAIR"
+      }
+    ]
+  },
+  {
+    "text": "<|system|>\nYou are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern.\n<|user|>\nSHAPE: void_rising\nWINDOW: n_states=20 duration=14.17\nMEAN_EISV: E=0.5800 I=0.5830 S=0.2038 V=0.4786\nDERIVATIVES: dE=0.0000 dI=-0.0002 dS=-0.0001 dV=0.0601\nSECOND_DERIVATIVES: d2E=-0.0000 d2I=-0.0002 d2S=-0.0002 d2V=0.0002\n<|assistant|>\nEISV_TOKENS: ~curiosity~ ~reflection~\nLUMEN_TOKENS: why what\nPATTERN: PAIR",
+    "shape": "void_rising",
+    "pattern": "PAIR",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an EISV trajectory expression mapper. Given a trajectory window with its shape classification, EISV state values, derivatives, and second derivatives, generate an appropriate primitive expression. Output the EISV tokens, their Lumen translations, and the expression pattern."
+      },
+      {
+        "role": "user",
+        "content": "SHAPE: void_rising\nWINDOW: n_states=20 duration=14.17\nMEAN_EISV: E=0.5800 I=0.5830 S=0.2038 V=0.4786\nDERIVATIVES: dE=0.0000 dI=-0.0002 dS=-0.0001 dV=0.0601\nSECOND_DERIVATIVES: d2E=-0.0000 d2I=-0.0002 d2S=-0.0002 d2V=0.0002"
+      },
+      {
+        "role": "assistant",
+        "content": "EISV_TOKENS: ~curiosity~ ~reflection~\nLUMEN_TOKENS: why what\nPATTERN: PAIR"
+      }
+    ]
+  }
+]

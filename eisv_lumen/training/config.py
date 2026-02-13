@@ -1,7 +1,7 @@
 """LoRA training configuration for the teacher model.
 
 Provides a dataclass-based configuration with sensible defaults for
-fine-tuning Llama 3.2 1B Instruct on EISV trajectory-expression data.
+fine-tuning Qwen3-4B on EISV trajectory-expression data.
 Supports loading overrides from YAML files.
 """
 
@@ -18,14 +18,17 @@ class TrainingConfig:
     """Configuration for LoRA teacher model training.
 
     All fields have sensible defaults for EISV trajectory-expression
-    fine-tuning on Llama 3.2 1B Instruct.
+    fine-tuning on Qwen3-4B.
     """
 
-    model_name: str = "meta-llama/Llama-3.2-1B-Instruct"
+    model_name: str = "Qwen/Qwen3-4B"
     lora_rank: int = 16
     lora_alpha: int = 32
     lora_target_modules: List[str] = field(
-        default_factory=lambda: ["q_proj", "k_proj", "v_proj", "o_proj"]
+        default_factory=lambda: [
+            "q_proj", "k_proj", "v_proj", "o_proj",
+            "gate_proj", "up_proj", "down_proj",
+        ]
     )
     lora_dropout: float = 0.05
     learning_rate: float = 2e-4

@@ -1,0 +1,25 @@
+# Teacher LoRA v2 — larger dataset, more epochs, tuned for Qwen3-4B.
+# Addresses low diversity and pattern accuracy from v1.
+
+model_name: "Qwen/Qwen3-4B"
+lora_rank: 32           # doubled rank for richer adaptation
+lora_alpha: 64
+lora_target_modules:
+  - "q_proj"
+  - "k_proj"
+  - "v_proj"
+  - "o_proj"
+  - "gate_proj"
+  - "up_proj"
+  - "down_proj"
+lora_dropout: 0.1       # more dropout to reduce memorization
+learning_rate: 0.00005  # lower LR for larger dataset
+num_epochs: 5           # more epochs
+batch_size: 2
+gradient_accumulation_steps: 8
+warmup_steps: 100
+max_seq_length: 512
+weight_decay: 0.01
+fp16: true
+seed: 42
+output_dir: "outputs/teacher_lora_v2"

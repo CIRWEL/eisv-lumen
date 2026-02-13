@@ -273,7 +273,7 @@ class TestCLIEvalWiring:
         eval_cmd = subparsers.add_parser("eval")
         eval_cmd.add_argument("--adapter", required=True)
         eval_cmd.add_argument("--test-data", required=True)
-        eval_cmd.add_argument("--base-model", default="meta-llama/Llama-3.2-1B-Instruct")
+        eval_cmd.add_argument("--base-model", default="Qwen/Qwen3-4B")
         eval_cmd.add_argument("--output", default="outputs/eval_results.json")
 
         args = parser.parse_args([
@@ -283,5 +283,5 @@ class TestCLIEvalWiring:
         ])
         assert args.adapter == "/tmp/adapter"
         assert args.test_data == "/tmp/test.json"
-        assert args.base_model == "meta-llama/Llama-3.2-1B-Instruct"
+        assert args.base_model == "Qwen/Qwen3-4B"
         assert args.output == "outputs/eval_results.json"

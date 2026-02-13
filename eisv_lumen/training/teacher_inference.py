@@ -55,7 +55,7 @@ def _require_inference_deps():
 
 def load_teacher_model(
     adapter_path: str,
-    base_model: str = "meta-llama/Llama-3.2-1B-Instruct",
+    base_model: str = "Qwen/Qwen3-4B",
 ):
     """Load the fine-tuned teacher model for inference.
 
@@ -119,12 +119,20 @@ def _extract_assistant_response(full_text: str, prompt_text: str) -> str:
         response = full_text[len(prompt_text):]
         return response.strip()
 
-    # Strategy 2: look for common assistant markers
-    for marker in ("<|assistant|>", "<|start_header_id|>assistant<|end_header_id|>"):
+    # Strategy 2: look for common assistant markers (covers Qwen3, Llama, generic)
+    for marker in (
+        "<|im_start|>assistant",   # Qwen3 ChatML format
+        "<|assistant|>",           # Generic chat format
+        "<|start_header_id|>assistant<|end_header_id|>",  # Llama format
+    ):
         if marker in full_text:
             parts = full_text.rsplit(marker, 1)
             if len(parts) == 2:
-                return parts[1].strip()
+                # Strip any trailing end-of-turn tokens
+                response = parts[1].strip()
+                for end_token in ("<|im_end|>", "<|eot_id|>", "</s>"):
+                    response = response.replace(end_token, "")
+                return response.strip()
 
     # Strategy 3: fall back to raw text
     return full_text.strip()
@@ -164,10 +172,18 @@ def generate_expression(
     messages = _format_inference_messages(trajectory_input)
 
     # Apply chat template if the tokenizer supports it
+    # Qwen3 supports enable_thinking — we disable it for direct structured output
     if hasattr(tokenizer, "apply_chat_template"):
-        prompt_text = tokenizer.apply_chat_template(
-            messages, tokenize=False, add_generation_prompt=True
-        )
+        try:
+            prompt_text = tokenizer.apply_chat_template(
+                messages, tokenize=False, add_generation_prompt=True,
+                enable_thinking=False,
+            )
+        except TypeError:
+            # Older tokenizers don't support enable_thinking kwarg
+            prompt_text = tokenizer.apply_chat_template(
+                messages, tokenize=False, add_generation_prompt=True,
+            )
     else:
         # Fallback: manual formatting
         parts = []
@@ -200,7 +216,7 @@ def generate_expression(
 def evaluate_on_test_set(
     adapter_path: str,
     test_data_path: str,
-    base_model: str = "meta-llama/Llama-3.2-1B-Instruct",
+    base_model: str = "Qwen/Qwen3-4B",
     max_new_tokens: int = 64,
 ) -> EvalResults:
     """Run evaluation on a test set and return results.

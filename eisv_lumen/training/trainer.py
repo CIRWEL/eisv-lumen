@@ -1,6 +1,6 @@
 """LoRA fine-tuning trainer for the EISV-Lumen teacher model.
 
-Wraps Hugging Face Transformers + PEFT to fine-tune Llama-3.2-1B-Instruct
+Wraps Hugging Face Transformers + PEFT to fine-tune a causal LM (default: Qwen3-4B)
 with LoRA on trajectory-expression training data.  All heavy imports
 (torch, transformers, peft) are deferred so that non-GPU environments can
 still import the module for testing.
@@ -143,7 +143,7 @@ def print_trainable_params(model) -> None:
 
 
 def train_teacher(config: TrainingConfig, data_dir: str) -> str:
-    """Fine-tune Llama-3.2-1B-Instruct with LoRA.
+    """Fine-tune a causal LM (default: Qwen3-4B) with LoRA.
 
     Parameters
     ----------
@@ -174,13 +174,24 @@ def train_teacher(config: TrainingConfig, data_dir: str) -> str:
     print(f"  Val examples:   {len(val_data)}")
 
     # 2. Load base model ---------------------------------------------------
-    dtype = torch.float16 if config.fp16 else torch.float32
-    print(f"Loading base model: {config.model_name} (dtype={dtype}) ...")
-    model = AutoModelForCausalLM.from_pretrained(
-        config.model_name,
-        torch_dtype=dtype,
-        device_map="auto",
-    )
+    # MPS (Apple Silicon) works best with float32; CUDA can use fp16
+    is_mps = torch.backends.mps.is_available() if hasattr(torch.backends, "mps") else False
+    if is_mps:
+        dtype = torch.float32
+        print(f"Loading base model: {config.model_name} (dtype=float32, device=mps) ...")
+        model = AutoModelForCausalLM.from_pretrained(
+            config.model_name,
+            torch_dtype=dtype,
+        )
+        model = model.to("mps")
+    else:
+        dtype = torch.float16 if config.fp16 else torch.float32
+        print(f"Loading base model: {config.model_name} (dtype={dtype}) ...")
+        model = AutoModelForCausalLM.from_pretrained(
+            config.model_name,
+            torch_dtype=dtype,
+            device_map="auto",
+        )
 
     # 3. Load tokenizer ----------------------------------------------------
     tokenizer = AutoTokenizer.from_pretrained(config.model_name)
@@ -202,8 +213,32 @@ def train_teacher(config: TrainingConfig, data_dir: str) -> str:
     print_trainable_params(model)
 
     # 6. Tokenize ----------------------------------------------------------
+    def _apply_chat_template_safe(messages: List[Dict[str, str]]) -> str:
+        """Apply the tokenizer's chat template, falling back to generic format."""
+        if hasattr(tokenizer, "apply_chat_template"):
+            try:
+                return tokenizer.apply_chat_template(
+                    messages, tokenize=False, add_generation_prompt=False,
+                    enable_thinking=False,
+                )
+            except TypeError:
+                return tokenizer.apply_chat_template(
+                    messages, tokenize=False, add_generation_prompt=False,
+                )
+        # Fallback: use the generic text format
+        return None
+
     def tokenize_examples(examples: List[Dict[str, Any]]) -> Dict[str, list]:
-        texts = [ex["text"] for ex in examples]
+        # Prefer the model's native chat template (ChatML for Qwen3)
+        # over our generic <|role|> format for better training signal.
+        texts = []
+        for ex in examples:
+            if "messages" in ex:
+                templated = _apply_chat_template_safe(ex["messages"])
+                texts.append(templated if templated else ex["text"])
+            else:
+                texts.append(ex["text"])
+
         encodings = tokenizer(
             texts,
             max_length=config.max_seq_length,
@@ -225,6 +260,10 @@ def train_teacher(config: TrainingConfig, data_dir: str) -> str:
     # 8. Training arguments ------------------------------------------------
     output_dir = config.output_dir
     args_dict = config_to_training_args(config, output_dir)
+    # MPS doesn't support fp16 training; disable it
+    if is_mps:
+        args_dict["fp16"] = False
+        args_dict["use_mps_device"] = True
     training_args = TrainingArguments(**args_dict)
 
     # 9. Trainer -----------------------------------------------------------

@@ -29,8 +29,8 @@ def cmd_prepare(args: argparse.Namespace) -> None:
 
     Calls :func:`prepare_training_data` with synthetic-only data,
     then writes train/val/test splits to the output directory.
-    The ``messages`` key is stripped before serialization since it
-    contains non-trivially-serializable chat message objects.
+    Each example includes ``text``, ``shape``, ``pattern``, and
+    ``messages`` (chat message list for tokenizer ``apply_chat_template``).
     """
     output_dir = args.output_dir
     os.makedirs(output_dir, exist_ok=True)
@@ -42,14 +42,10 @@ def cmd_prepare(args: argparse.Namespace) -> None:
         seed=args.seed,
     )
 
-    def _strip_messages(items: List[dict]) -> List[dict]:
-        """Remove 'messages' key from each dict for JSON serialization."""
-        return [{k: v for k, v in item.items() if k != "messages"} for item in items]
-
     for name, data in [("train", train), ("val", val), ("test", test)]:
         path = os.path.join(output_dir, f"{name}.json")
         with open(path, "w") as f:
-            json.dump(_strip_messages(data), f, indent=2)
+            json.dump(data, f, indent=2)
         print(f"  {name}: {len(data)} examples -> {path}")
 
     print("Done.")
@@ -224,8 +220,8 @@ def main() -> None:
     eval_cmd.add_argument(
         "--base-model",
         type=str,
-        default="meta-llama/Llama-3.2-1B-Instruct",
-        help="Base model name (default: meta-llama/Llama-3.2-1B-Instruct)",
+        default="Qwen/Qwen3-4B",
+        help="Base model name (default: Qwen/Qwen3-4B)",
     )
     eval_cmd.add_argument(
         "--output",

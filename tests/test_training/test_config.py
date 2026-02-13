@@ -18,7 +18,7 @@ class TestTrainingConfig:
     def test_defaults(self):
         """Default config should have sensible values."""
         config = TrainingConfig()
-        assert config.model_name == "meta-llama/Llama-3.2-1B-Instruct"
+        assert config.model_name == "Qwen/Qwen3-4B"
         assert config.lora_rank == 16
         assert config.lora_alpha == 32
         assert config.lora_dropout == 0.05
@@ -34,9 +34,12 @@ class TestTrainingConfig:
         assert config.output_dir == "outputs/teacher_lora"
 
     def test_lora_target_modules(self):
-        """Default LoRA target modules should cover attention projections."""
+        """Default LoRA target modules should cover attention + MLP projections."""
         config = TrainingConfig()
-        assert config.lora_target_modules == ["q_proj", "k_proj", "v_proj", "o_proj"]
+        assert config.lora_target_modules == [
+            "q_proj", "k_proj", "v_proj", "o_proj",
+            "gate_proj", "up_proj", "down_proj",
+        ]
 
     def test_custom_values(self):
         """Custom values should override defaults."""
@@ -65,7 +68,7 @@ class TestLoadConfig:
         """load_config with no path should return default TrainingConfig."""
         config = load_config()
         assert isinstance(config, TrainingConfig)
-        assert config.model_name == "meta-llama/Llama-3.2-1B-Instruct"
+        assert config.model_name == "Qwen/Qwen3-4B"
         assert config.lora_rank == 16
 
     def test_load_from_yaml(self, tmp_path):
