@@ -1,0 +1,27 @@
+# Teacher LoRA v3 — larger dataset, stable rank 16, 5 epochs.
+# V1 (rank 16, 360 examples) ran stable in 33min → 0.60 coherence.
+# V2 (rank 32, 1440 examples) crashed at 50% from MPS memory pressure.
+# V3: keep rank 16 (stable) but use the larger 1440 dataset + 5 epochs.
+
+model_name: "Qwen/Qwen3-4B"
+lora_rank: 16
+lora_alpha: 32
+lora_target_modules:
+  - "q_proj"
+  - "k_proj"
+  - "v_proj"
+  - "o_proj"
+  - "gate_proj"
+  - "up_proj"
+  - "down_proj"
+lora_dropout: 0.1
+learning_rate: 0.0001
+num_epochs: 5
+batch_size: 2
+gradient_accumulation_steps: 8
+warmup_steps: 100
+max_seq_length: 512
+weight_decay: 0.01
+fp16: true
+seed: 42
+output_dir: "outputs/teacher_lora_v3"

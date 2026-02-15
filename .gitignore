@@ -41,6 +41,15 @@ data/*.sqlite
 *.gguf
 *.parquet
 
+# Model adapters & checkpoints (large binaries)
+outputs/teacher_lora/
+outputs/teacher_lora_v2/
+outputs/teacher_lora_v3/
+*.safetensors
+
+# Training logs (reproducible)
+outputs/*.log
+
 # Weights & Biases
 wandb/
 
