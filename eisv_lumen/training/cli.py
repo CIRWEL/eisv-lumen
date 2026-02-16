@@ -35,11 +35,21 @@ def cmd_prepare(args: argparse.Namespace) -> None:
     output_dir = args.output_dir
     os.makedirs(output_dir, exist_ok=True)
 
+    # Parse shape overrides if provided (format: "shape1:count,shape2:count")
+    shape_overrides = None
+    if hasattr(args, 'shape_overrides') and args.shape_overrides:
+        shape_overrides = {}
+        for pair in args.shape_overrides.split(","):
+            shape_name, count = pair.strip().split(":")
+            shape_overrides[shape_name.strip()] = int(count.strip())
+        print(f"  Shape overrides: {shape_overrides}")
+
     print(f"Preparing training data (min_per_shape={args.min_per_shape}, seed={args.seed})...")
     train, val, test = prepare_training_data(
         real_records=[],
         min_per_shape=args.min_per_shape,
         seed=args.seed,
+        shape_overrides=shape_overrides,
     )
 
     for name, data in [("train", train), ("val", val), ("test", test)]:
@@ -184,6 +194,12 @@ def main() -> None:
         type=str,
         default="data/training",
         help="Output directory for JSON files (default: data/training)",
+    )
+    prep.add_argument(
+        "--shape-overrides",
+        type=str,
+        default=None,
+        help="Per-shape min counts, e.g. 'drift_dissonance:800,basin_transition_up:800'",
     )
     prep.set_defaults(func=cmd_prepare)
 

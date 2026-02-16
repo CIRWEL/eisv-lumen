@@ -1,0 +1,27 @@
+# Teacher LoRA v5 — oversampled weak shapes targeting Gate 1 (0.933).
+# V4 (3600 examples, 7 epochs) → 0.904 coherence, 100% valid.
+# Weak shapes: drift_dissonance 0.80, basin_transition_up 0.87, basin_transition_down 0.853.
+# V5: 800/shape for weak trio, 400/shape for rest → 4800 total, 7 epochs.
+
+model_name: "Qwen/Qwen3-4B"
+lora_rank: 16
+lora_alpha: 32
+lora_target_modules:
+  - "q_proj"
+  - "k_proj"
+  - "v_proj"
+  - "o_proj"
+  - "gate_proj"
+  - "up_proj"
+  - "down_proj"
+lora_dropout: 0.1
+learning_rate: 0.00008
+num_epochs: 7
+batch_size: 2
+gradient_accumulation_steps: 8
+warmup_steps: 150
+max_seq_length: 512
+weight_decay: 0.01
+fp16: true
+seed: 42
+output_dir: "outputs/teacher_lora_v5"

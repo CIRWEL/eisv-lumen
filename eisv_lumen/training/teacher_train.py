@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
-from typing import Dict, List, Tuple
+from typing import Dict, List, Optional, Tuple
 
 from eisv_lumen.eval.baseline import ALL_TOKENS
 from eisv_lumen.bridge.lumen_bridge import LUMEN_TOKENS
@@ -36,6 +36,7 @@ def prepare_training_data(
     real_records: List[Dict],
     min_per_shape: int = 50,
     seed: int = 42,
+    shape_overrides: Optional[Dict[str, int]] = None,
 ) -> Tuple[List[Dict], List[Dict], List[Dict]]:
     """Build and split a training dataset, formatted for tokenizer consumption.
 
@@ -51,13 +52,18 @@ def prepare_training_data(
         Minimum examples per shape class.
     seed:
         Random seed for reproducibility.
+    shape_overrides:
+        Optional dict mapping shape names to per-shape minimums.
 
     Returns
     -------
     Tuple of (train, val, test) where each element is a list of dicts
     with keys ``text``, ``shape``, ``pattern``, ``messages``.
     """
-    examples = build_training_dataset(real_records, min_per_shape=min_per_shape, seed=seed)
+    examples = build_training_dataset(
+        real_records, min_per_shape=min_per_shape, seed=seed,
+        shape_overrides=shape_overrides,
+    )
     train_ex, val_ex, test_ex = split_dataset(examples, seed=seed)
 
     train = [format_for_tokenizer(ex) for ex in train_ex]

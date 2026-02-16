@@ -32,12 +32,13 @@ def build_training_dataset(
     real_records: List[Dict[str, Any]],
     min_per_shape: int = 50,
     seed: int = 42,
+    shape_overrides: Optional[Dict[str, int]] = None,
 ) -> List[TrainingExample]:
     """Build a balanced training dataset from real and synthetic trajectories.
 
     Converts real trajectory records to training examples, then generates
     synthetic trajectories for any shape class that is underrepresented
-    (below *min_per_shape*).
+    (below *min_per_shape* or its per-shape override).
 
     Parameters
     ----------
@@ -46,6 +47,10 @@ def build_training_dataset(
         ``derivatives``, and ``second_derivatives`` keys.
     min_per_shape:
         Minimum number of training examples per shape class.
+    shape_overrides:
+        Optional dict mapping shape names to per-shape minimums.
+        Overrides *min_per_shape* for specific shapes, e.g.
+        ``{"drift_dissonance": 800, "basin_transition_up": 800}``.
     seed:
         Random seed for reproducible synthetic generation.
 
@@ -71,9 +76,11 @@ def build_training_dataset(
         example_seed += 1
 
     # Fill underrepresented shapes with synthetic trajectories
+    overrides = shape_overrides or {}
     synth_seed_offset = seed + 10000
     for shape in TrajectoryShape:
-        deficit = min_per_shape - shape_counts[shape.value]
+        target = overrides.get(shape.value, min_per_shape)
+        deficit = target - shape_counts[shape.value]
         for i in range(max(0, deficit)):
             traj_seed = synth_seed_offset + i
             states = generate_trajectory(shape.value, seed=traj_seed)

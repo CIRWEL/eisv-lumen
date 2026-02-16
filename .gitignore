@@ -45,6 +45,8 @@ data/*.sqlite
 outputs/teacher_lora/
 outputs/teacher_lora_v2/
 outputs/teacher_lora_v3/
+outputs/teacher_lora_v4/
+outputs/teacher_lora_v5/
 *.safetensors
 
 # Training logs (reproducible)

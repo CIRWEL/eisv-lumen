@@ -1,0 +1,27 @@
+# Teacher LoRA v4 — more data, 7 epochs, targeting 0.93+ coherence.
+# V3 (rank 16, 1440 examples, 5 epochs) → 0.847 coherence, 100% valid.
+# Weak shapes: drift_dissonance 0.675, rising_entropy 0.725.
+# V4: 4500 examples (min_per_shape=500), 7 epochs, slightly lower LR.
+
+model_name: "Qwen/Qwen3-4B"
+lora_rank: 16
+lora_alpha: 32
+lora_target_modules:
+  - "q_proj"
+  - "k_proj"
+  - "v_proj"
+  - "o_proj"
+  - "gate_proj"
+  - "up_proj"
+  - "down_proj"
+lora_dropout: 0.1
+learning_rate: 0.00008
+num_epochs: 7
+batch_size: 2
+gradient_accumulation_steps: 8
+warmup_steps: 150
+max_seq_length: 512
+weight_decay: 0.01
+fp16: true
+seed: 42
+output_dir: "outputs/teacher_lora_v4"
