@@ -1,0 +1,35 @@
+# Teacher LoRA v7 — realistic V range + longer windows.
+#
+# Changes from V6:
+#   1. Synthetic V clamped to [0, 0.3] (matches real Lumen observation range)
+#   2. Window size increased from 4 to 15 steps (91% label accuracy vs 65%)
+#   3. Blended data re-generated with --window-size 15
+#
+# V6 baseline (pending): blended 50/50, 7 epochs, checkpoint ~1260.
+# V5 synthetic: 0.911 coherence. V5 real eval: 0.768.
+#
+# Hypothesis: realistic V range + longer windows should close the
+# synthetic-vs-real coherence gap (0.911 → 0.768).
+
+model_name: "Qwen/Qwen3-4B"
+lora_rank: 16
+lora_alpha: 32
+lora_target_modules:
+  - "q_proj"
+  - "k_proj"
+  - "v_proj"
+  - "o_proj"
+  - "gate_proj"
+  - "up_proj"
+  - "down_proj"
+lora_dropout: 0.1
+learning_rate: 0.00008
+num_epochs: 7
+batch_size: 2
+gradient_accumulation_steps: 8
+warmup_steps: 150
+max_seq_length: 512
+weight_decay: 0.01
+fp16: true
+seed: 42
+output_dir: "outputs/teacher_lora_v7"

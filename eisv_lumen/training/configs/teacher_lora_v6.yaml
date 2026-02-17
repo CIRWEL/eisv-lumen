@@ -1,0 +1,27 @@
+# Teacher LoRA v6 — blended real + synthetic data.
+# V5 synthetic: 0.911 coherence. V5 real eval: 0.768.
+# V6: 50/50 real/synthetic blend (1803 real, 1797 synthetic), 7 epochs.
+# Same hyperparams as V4/V5 (proven stable on M4 Max).
+
+model_name: "Qwen/Qwen3-4B"
+lora_rank: 16
+lora_alpha: 32
+lora_target_modules:
+  - "q_proj"
+  - "k_proj"
+  - "v_proj"
+  - "o_proj"
+  - "gate_proj"
+  - "up_proj"
+  - "down_proj"
+lora_dropout: 0.1
+learning_rate: 0.00008
+num_epochs: 7
+batch_size: 2
+gradient_accumulation_steps: 8
+warmup_steps: 150
+max_seq_length: 512
+weight_decay: 0.01
+fp16: true
+seed: 42
+output_dir: "outputs/teacher_lora_v6"

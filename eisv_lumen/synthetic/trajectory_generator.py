@@ -276,14 +276,17 @@ def _gen_void_rising(
     Must keep E range < 0.2, S range < 0.2, and mean dS <= 0.05.
     Void_rising is rule 5, rising_entropy is rule 6 — void_rising
     has priority when both could match.
+
+    V is clamped to [0, 0.3] to match Lumen's real observation range
+    (V = (1-presence)*0.3, so V never exceeds 0.3 in practice).
     """
-    # Feasible if total V change < 0.95 (V starts near 0, ends near 1)
-    eff_dt = min(dt, _max_dt_for_slope(n, 0.85, _THRESH + 0.01))
+    # V range in real Lumen data is [0, 0.3]. Keep synthetic realistic.
+    eff_dt = min(dt, _max_dt_for_slope(n, 0.25, _THRESH + 0.01))
     target_deriv = _THRESH + 0.01
     total_v_change = target_deriv * (n - 1) * eff_dt
 
-    v_start = 0.05 + rng.uniform(0.0, 0.05)
-    v_end = _clamp(v_start + total_v_change, 0.0, 0.95)
+    v_start = 0.02 + rng.uniform(0.0, 0.03)
+    v_end = _clamp(v_start + total_v_change, 0.0, 0.30)
 
     v_vals = _linspace(v_start, v_end, n)
 

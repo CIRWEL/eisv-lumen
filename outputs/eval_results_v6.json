@@ -1,0 +1,19 @@
+{
+  "mean_coherence": 0.9115740740740741,
+  "valid_rate": 0.9972222222222222,
+  "pattern_accuracy": 0.21944444444444444,
+  "n_total": 360,
+  "n_valid": 359,
+  "per_shape_coherence": {
+    "basin_transition_down": 0.8791666666666667,
+    "basin_transition_up": 0.8291666666666666,
+    "convergence": 0.925,
+    "drift_dissonance": 0.8875,
+    "entropy_spike_recovery": 0.9375,
+    "falling_energy": 0.8625,
+    "rising_entropy": 0.9208333333333334,
+    "settled_presence": 1.0,
+    "void_rising": 0.9625
+  },
+  "diversity": 0.021067415730337078
+}

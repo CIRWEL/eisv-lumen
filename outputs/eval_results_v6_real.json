@@ -1,0 +1,21 @@
+{
+  "mean_coherence": 0.952,
+  "valid_rate": 1.0,
+  "pattern_accuracy": 0.258,
+  "n_total": 500,
+  "n_valid": 500,
+  "per_shape_coherence": {
+    "convergence": 0.935935935935936,
+    "settled_presence": 0.993006993006993,
+    "void_rising": 1.0,
+    "basin_transition_down": 1.0,
+    "falling_energy": 0.875,
+    "basin_transition_up": 1.0,
+    "rising_entropy": 1.0,
+    "entropy_spike_recovery": 0.8333333333333334
+  },
+  "diversity": 0.01756587202007528,
+  "data_source": "real_lumen_trajectories",
+  "dataset": "hikewa/unitares-eisv-trajectories",
+  "adapter": "outputs/teacher_lora_v6/final_adapter"
+}
