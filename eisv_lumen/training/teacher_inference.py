@@ -9,15 +9,11 @@ from __future__ import annotations
 
 import json
 import os
-from dataclasses import asdict
-from typing import Any, Dict, List, Optional, Tuple, TYPE_CHECKING
+from typing import Any, Dict, List, Optional, Tuple
 
 from eisv_lumen.training.chat_format import SYSTEM_PROMPT
 from eisv_lumen.training.teacher_train import parse_model_output, OutputParseResult
 from eisv_lumen.training.teacher_eval import evaluate_predictions, EvalResults
-
-if TYPE_CHECKING:
-    pass
 
 
 # ---------------------------------------------------------------------------

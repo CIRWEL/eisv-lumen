@@ -9,7 +9,6 @@ import pytest
 from eisv_lumen.shapes.shape_classes import TrajectoryShape
 from eisv_lumen.training.data_prep import TrainingExample
 from eisv_lumen.training.dataset_builder import (
-    DatasetStats,
     build_training_dataset,
     split_dataset,
 )

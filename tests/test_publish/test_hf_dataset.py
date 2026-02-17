@@ -80,7 +80,14 @@ class TestGenerateDatasetCard:
     def test_contains_eisv_explanation(self):
         card = generate_dataset_card()
         assert "EISV" in card
-        assert "Energy" in card or "Entropy" in card
+        # Verify correct dimension names (not the old wrong ones)
+        assert "Energy" in card
+        assert "Information Integrity" in card
+        assert "Entropy" in card
+        assert "Void" in card
+        # Ensure old wrong names are NOT present
+        assert "Sigma" not in card
+        assert "Valence" not in card
 
     def test_contains_license(self):
         card = generate_dataset_card()

@@ -36,7 +36,7 @@ from eisv_lumen.training.chat_format import format_for_tokenizer
 from eisv_lumen.synthetic.trajectory_generator import generate_trajectory
 
 
-def load_and_classify_real_data(seed: int = 42) -> Dict[str, List[Dict]]:
+def load_and_classify_real_data(seed: int = 42, window_size: int = 4) -> Dict[str, List[Dict]]:
     """Load real trajectories from HF and group by classified shape."""
     from datasets import load_dataset
 
@@ -52,12 +52,12 @@ def load_and_classify_real_data(seed: int = 42) -> Dict[str, List[Dict]]:
             continue
 
         states = json.loads(example["eisv_states"])
-        if len(states) < 4:
+        if len(states) < window_size:
             skipped += 1
             continue
 
-        # Take last 4 states for consistent window
-        window_states = states[-4:]
+        # Take last N states for consistent window
+        window_states = states[-window_size:]
 
         try:
             window = compute_trajectory_window(window_states)
@@ -157,12 +157,14 @@ def main():
     parser = argparse.ArgumentParser(description="Prepare blended real+synthetic data")
     parser.add_argument("--max-real-per-shape", type=int, default=400)
     parser.add_argument("--min-per-shape", type=int, default=400)
+    parser.add_argument("--window-size", type=int, default=4,
+                        help="Number of EISV states per trajectory window (default: 4, recommended: 15-20)")
     parser.add_argument("--output-dir", type=str, default="data/training_v6")
     parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args()
 
     # 1. Load and classify real data
-    real_by_shape = load_and_classify_real_data(seed=args.seed)
+    real_by_shape = load_and_classify_real_data(seed=args.seed, window_size=args.window_size)
 
     # 2. Build blended dataset
     print(f"\nBuilding blended dataset (max_real={args.max_real_per_shape}, min={args.min_per_shape}) ...")

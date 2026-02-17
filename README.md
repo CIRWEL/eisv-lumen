@@ -37,7 +37,7 @@ The evaluation script produces a JSON report with shape distribution, baseline c
 EISV-Lumen is structured as a three-layer system. This release covers Layer 1 and the core of Layer 2.
 
 ```
-Layer 3 (future)   Fine-tuned Deep Voice (LoRA on Llama-3.2-3B-Instruct)
+Layer 3 (future)   Fine-tuned Deep Voice (LoRA on Qwen3-4B)
                          |
 Layer 2 (this)     Dynamics-Emergent Primitive Voice (rule-based, interpretable)
                          |
@@ -60,12 +60,12 @@ The EISV framework maps Lumen's continuous anima state to four governance dimens
 
 | Dimension | Symbol | Range | Lumen Mapping | Description |
 |-----------|--------|-------|---------------|-------------|
-| Energy | E | [0, 1] | warmth | Activation level, system intensity |
-| Information Integrity | I | [0, 1] | clarity | Coherence, signal fidelity |
-| Entropy | S | [0, 1] | 1 - stability | Disorder, uncertainty (inverted stability) |
-| Void | V | [0, 1] | (1 - presence) * 0.3 | Absence, disengagement (scaled) |
+| Energy | E | [0, 1] | warmth | Productive capacity; couples toward I, reduced by entropy cross-coupling |
+| Information Integrity | I | [0, 1] | clarity | Signal fidelity; boosted by coherence, reduced by entropy |
+| Entropy | S | [0, 1] | 1 - stability | Semantic uncertainty; decays naturally, rises with complexity and drift |
+| Void | V | [0, 0.3] | (1 - presence) * 0.3 | Absence of engagement (scaled inverse presence) |
 
-All dimensions are continuous and computed at every state snapshot. First and second derivatives are computed via finite differences over sliding windows (default: window_size=20, stride=10).
+All dimensions are continuous and computed at every state snapshot. First and second derivatives are computed via finite differences over sliding windows (assembler default: window_size=10, stride=5; dataset publisher uses window_size=20, stride=10).
 
 ---
 
@@ -324,10 +324,10 @@ Apache 2.0. See [LICENSE](LICENSE).
 ## Citation
 
 ```bibtex
-@misc{eisv_lumen_2025,
+@misc{eisv_lumen_2026,
   title   = {EISV-Lumen: Dynamics-Emergent Voice and Governance Benchmark},
   author  = {hikewa},
-  year    = {2025},
+  year    = {2026},
   url     = {https://github.com/CIRWEL/eisv-lumen},
   note    = {Rule-based trajectory-to-expression system achieving 0.503 coherence
              (0.933 with feedback) on 21,449 real Lumen trajectories.

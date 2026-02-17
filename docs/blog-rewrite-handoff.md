@@ -26,11 +26,14 @@ Rewrite `docs/huggingface-blog-post-draft.md` to reflect current results. The ex
 - Confirms synthetic data mismatch hypothesis
 - Results in: `outputs/eval_results_v5_real.json`
 
-### Shape Classification Mismatch Finding
-- 35% of HF dataset labels disagree with our classifier on the same trajectories
-- Biggest mismatch: 5,138 records labeled `settled_presence` in HF classified as `convergence` by our classifier
-- Cause: boundary between settled_presence and convergence is fuzzy — real data straddles it
-- Our classifier uses 4-step windows; HF labels may have used different window sizes
+### Window-Size Root Cause (Feb 16 finding)
+- HF labels were generated from **20-step windows**. Training classifier uses **4-step windows**.
+- 4-step: 65% match → 8-step: 77% → 10-step: 81% → 15-step: 91% → 20-step: 100%
+- 5,138 settled_presence→convergence mismatches: 4 steps only sees the tail of settling
+- settled_presence drops from 10,121 (20-step) to 5,555 (4-step)
+- entropy_spike_recovery drops from 1,053 to 89 (need to see spike AND recovery)
+- **This is the actual bottleneck** — not just synthetic data mismatch but input too short for defined shapes
+- V7 should use 15-20 step windows. V6 (training now) has dirty labels ~35% of the time.
 
 ## New Narrative (replaces "neural methods fail")
 
@@ -48,8 +51,11 @@ Rewrite `docs/huggingface-blog-post-draft.md` to reflect current results. The ex
 3. **Loss function mismatch**: ⚠️ INCONCLUSIVE. Never tested custom loss; standard CE got to 0.911.
 4. **Class imbalance**: ✅ PARTIALLY CONFIRMED. Oversampling weak shapes helped (V5 drift_dissonance 0→0.86), but was not the main bottleneck.
 
-**New finding not in original draft:**
-- Shape classification boundary problem: settled_presence vs convergence boundary is fuzzy on real data (5,138 mismatches). This is an inherent ambiguity in the EISV framework, not a classifier bug.
+**New finding not in original draft (UPDATED Feb 16):**
+- **Window-size problem**: The 35% label mismatch is not inherent ambiguity — it's information loss from 4-step windows. HF labels (20-step) are correct. Training classifier (4-step) lacks context.
+- V1-V5 all trained on 4-step windows → 35% dirty labels throughout
+- V7 should use 15-20 step windows for reliable shape classification
+- This reframes the entire V1-V5 narrative: bottleneck is input representation, not just data distribution
 
 ## Key Design Decisions to Highlight
 
@@ -87,3 +93,13 @@ Honest, technical, not overclaiming. The 0.768 on real data is not hidden — it
 - GitHub: https://github.com/CIRWEL/eisv-lumen
 - HuggingFace dataset: hikewa/unitares-eisv-trajectories
 - All eval results committed and pushed
+
+## Status (Feb 16 2026)
+- [x] Blog post fully rewritten in `docs/huggingface-blog-post-draft.md`
+- [x] EISV names fixed in `eisv_lumen/publish/hf_dataset.py` (Energy, Information Integrity, Entropy, Void)
+- [x] Shape descriptions corrected (S not I for entropy, V for void)
+- [x] Citation year updated to 2026
+- [x] Window-size finding added to dataset card, blog Section 2.6 and 5.5, and this handoff
+- [ ] V6 training completes (~13h remaining as of Feb 16)
+- [x] Republish HF dataset card with corrected names, descriptions, and window-size note
+- [ ] V7 planning: 15-20 step input windows, updated synthetic generator

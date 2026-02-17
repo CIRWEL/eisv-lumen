@@ -9,23 +9,12 @@ from __future__ import annotations
 
 import random
 from collections import defaultdict
-from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Tuple
 
 from eisv_lumen.shapes.shape_classes import TrajectoryShape
 from eisv_lumen.extract.derivatives import compute_trajectory_window
 from eisv_lumen.synthetic.trajectory_generator import generate_trajectory
 from eisv_lumen.training.data_prep import TrainingExample, build_training_example
-
-
-@dataclass
-class DatasetStats:
-    """Summary statistics for a built training dataset."""
-
-    total: int
-    per_shape: Dict[str, int]
-    real_count: int
-    synthetic_count: int
 
 
 def build_training_dataset(

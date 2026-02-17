@@ -17,9 +17,6 @@ import argparse
 import json
 import os
 import sys
-from dataclasses import asdict
-from typing import List
-
 from eisv_lumen.training.teacher_train import prepare_training_data
 from eisv_lumen.training.teacher_eval import EvalResults, check_gate1
 

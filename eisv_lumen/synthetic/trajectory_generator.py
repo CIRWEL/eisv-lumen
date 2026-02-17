@@ -274,9 +274,8 @@ def _gen_void_rising(
     """V increases: mean dV > 0.05.
 
     Must keep E range < 0.2, S range < 0.2, and mean dS <= 0.05.
-    Also must not trigger rising_entropy (rule 6 checked before void_rising
-    is rule 5, but actually void_rising is rule 5 and rising_entropy is
-    rule 6, so void_rising has priority when both could match).
+    Void_rising is rule 5, rising_entropy is rule 6 — void_rising
+    has priority when both could match.
     """
     # Feasible if total V change < 0.95 (V starts near 0, ends near 1)
     eff_dt = min(dt, _max_dt_for_slope(n, 0.85, _THRESH + 0.01))

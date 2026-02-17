@@ -178,6 +178,12 @@ def main():
         help="Max examples to evaluate (0 = all, default: 500)",
     )
     parser.add_argument(
+        "--window-size",
+        type=int,
+        default=4,
+        help="Number of EISV states per trajectory window (default: 4, recommended: 15-20)",
+    )
+    parser.add_argument(
         "--seed",
         type=int,
         default=42,
@@ -189,7 +195,7 @@ def main():
     records = load_hf_dataset(max_examples=args.max_examples, seed=args.seed)
 
     # 2. Build test set from real trajectories
-    test_examples = build_real_test_set(records, seed=args.seed)
+    test_examples = build_real_test_set(records, min_states=args.window_size, seed=args.seed)
 
     if not test_examples:
         print("ERROR: No valid test examples generated. Check data format.")
