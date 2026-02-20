@@ -7,7 +7,7 @@
 
 **Dynamics-emergent voice and governance benchmark for embodied AI.**
 
-EISV-Lumen is a rule-based, fully interpretable system that generates primitive expressions from thermodynamic governance trajectories. Rather than training a neural network to produce agent utterances, it classifies continuous EISV (Energy, Information Integrity, Entropy, Void) dynamics into 9 trajectory shape classes and uses affinity-weighted token sampling to produce contextually coherent expressions. Evaluated on 21,449 real trajectory records from [Lumen](https://github.com/CIRWEL/eisv-lumen) -- an embodied AI agent running on a Raspberry Pi within the [UNITARES](https://github.com/CIRWEL) governance framework -- the system achieves 0.503 coherence (beating random baseline by 23.8 percentage points) without any learned parameters, and 0.933 coherence with an online feedback loop.
+EISV-Lumen is a three-layer system that generates primitive expressions from thermodynamic governance trajectories. It classifies continuous EISV (Energy, Information Integrity, Entropy, Void) dynamics into 9 trajectory shape classes and maps them to contextually coherent expressions through rule-based, neural, and distilled approaches. Evaluated on 21,449 real trajectory records from [Lumen](https://github.com/CIRWEL/anima-mcp) -- an embodied AI agent running on a Raspberry Pi within the [UNITARES](https://github.com/CIRWEL) governance framework -- the rule-based Layer 2 achieves 0.933 coherence with an online feedback loop, while the fine-tuned Layer 3 teacher (LoRA on Qwen3-4B) reaches 0.952 coherence on real data. A distilled RandomForest student model runs on-device on Lumen's Pi Zero 2W.
 
 ---
 
@@ -34,14 +34,14 @@ The evaluation script produces a JSON report with shape distribution, baseline c
 
 ## Architecture
 
-EISV-Lumen is structured as a three-layer system. This release covers Layer 1 and the core of Layer 2.
+EISV-Lumen is structured as a three-layer system.
 
 ```
-Layer 3 (future)   Fine-tuned Deep Voice (LoRA on Qwen3-4B)
+Layer 3            Fine-tuned Teacher (LoRA on Qwen3-4B) + Pi-sized Student (RandomForest)
                          |
-Layer 2 (this)     Dynamics-Emergent Primitive Voice (rule-based, interpretable)
+Layer 2            Dynamics-Emergent Primitive Voice (rule-based, interpretable)
                          |
-Layer 1 (this)     Dataset + Benchmark + Evaluation Framework
+Layer 1            Dataset + Benchmark + Evaluation Framework
                          |
                    Real Lumen Data (anima.db: 214,503 state snapshots)
 ```
@@ -50,7 +50,7 @@ Layer 1 (this)     Dataset + Benchmark + Evaluation Framework
 
 **Layer 2** is the primary research contribution: a dynamics-emergent expression generator that maps trajectory shapes to primitive token expressions through shape-driven pattern selection and affinity-weighted sampling -- no gradient descent, no learned embeddings, fully inspectable.
 
-**Layer 3** (planned) will fine-tune a language model on the trajectory-expression pairs produced by Layers 1-2.
+**Layer 3** fine-tunes Qwen3-4B via LoRA on trajectory-expression pairs. The V6 teacher achieves 0.952 coherence on real Lumen data (exceeding the 0.933 Gate 1 threshold). A RandomForest student model is distilled from the teacher for on-device deployment on Lumen's Pi Zero 2W.
 
 ---
 
@@ -151,7 +151,7 @@ The system uses 15 primitive tokens:
 
 Full evaluation on real Lumen data (21,449 trajectory records from 214,503 state snapshots, 921 primitive expressions):
 
-### Coherence Scores
+### Layer 2 — Rule-Based Coherence
 
 | Condition | Mean Coherence | Description |
 |-----------|---------------|-------------|
@@ -161,13 +161,36 @@ Full evaluation on real Lumen data (21,449 trajectory records from 214,503 state
 | **Expression generator** | **0.503** | Rule-based, no feedback |
 | **With feedback loop** | **0.933** | Online weight updates, near-oracle |
 
+### Layer 3 — Neural Teacher (V6, Real Data)
+
+| Metric | Value |
+|--------|-------|
+| **Mean coherence** | **0.952** |
+| Valid rate | 100% (500/500) |
+| Pattern accuracy | 0.258 |
+| Diversity | 0.018 |
+
+Per-shape coherence on real Lumen trajectories:
+
+| Shape | Coherence | n |
+|-------|-----------|---|
+| settled_presence | 0.993 | majority |
+| convergence | 0.936 | majority |
+| basin_transition_up | 1.000 | rare |
+| basin_transition_down | 1.000 | rare |
+| rising_entropy | 1.000 | rare |
+| void_rising | 1.000 | rare |
+| falling_energy | 0.875 | rare |
+| entropy_spike_recovery | 0.833 | rare |
+
 ### Key Numbers
 
 - **263 tests**, all passing
 - **21,499 total trajectory records** (21,449 real + 50 synthetic)
 - **8 of 9** trajectory shapes observed in real data
-- **+23.8pp** over random baseline (without feedback)
-- **+43.0pp** improvement from feedback loop (0.503 -> 0.933)
+- Layer 2: **0.933** coherence (rule-based + feedback)
+- Layer 3: **0.952** coherence (V6 teacher on real data)
+- Student distillation: RandomForest models for Pi deployment
 - **Go/no-go gate: GO** -- all three criteria passed:
   - Beats random by > 5pp
   - At least 3 distinct shapes observed
@@ -206,7 +229,7 @@ ds = load_dataset("hikewa/unitares-eisv-trajectories")
 
 ## Bridge to Lumen
 
-The `bridge/` module connects EISV-Lumen's trajectory-derived expressions to [Lumen's](https://github.com/CIRWEL/eisv-lumen) live primitive language system. Lumen uses 16 primitive tokens across 5 categories (STATE, PRESENCE, RELATIONAL, INQUIRY, CHANGE). The bridge provides:
+The `bridge/` module connects EISV-Lumen's trajectory-derived expressions to [Lumen's](https://github.com/CIRWEL/anima-mcp) live primitive language system. Lumen uses 16 primitive tokens across 5 categories (STATE, PRESENCE, RELATIONAL, INQUIRY, CHANGE). The bridge provides:
 
 1. **Token translation** -- maps each EISV-Lumen token to Lumen primitives (e.g., `~warmth~` -> `warm, feel`)
 2. **State conversion** -- converts EISV vectors to Lumen anima states (warmth, clarity, stability, presence)
@@ -233,18 +256,28 @@ eisv-lumen/
 ├── pyproject.toml                        # Package config, dependencies
 ├── eisv_lumen/
 │   ├── __init__.py
-│   ├── extract/                          # Data extraction layer
+│   ├── extract/                          # Layer 1: Data extraction
 │   │   ├── lumen_states.py               #   State history + EISV mapping
 │   │   ├── lumen_expressions.py          #   Primitive expression history
 │   │   ├── derivatives.py                #   Finite-difference EISV derivatives
 │   │   ├── governance_data.py            #   Governance trajectory extraction
 │   │   └── assembler.py                  #   Dataset assembly pipeline
-│   ├── shapes/                           # Trajectory classification
+│   ├── shapes/                           # Layer 2: Trajectory classification + voice
 │   │   ├── shape_classes.py              #   9 shape classes + rule-based classifier
 │   │   └── expression_generator.py       #   Dynamics-emergent voice (primary contribution)
+│   ├── training/                         # Layer 3: Teacher fine-tuning
+│   │   ├── trainer.py                    #   LoRA training loop
+│   │   ├── teacher_eval.py              #   Evaluation on real data
+│   │   ├── teacher_inference.py         #   Inference utilities
+│   │   ├── dataset_builder.py           #   Training data preparation
+│   │   └── configs/                     #   Training YAML configs (v3-v6)
+│   ├── distillation/                    # Layer 3: Student distillation
+│   │   ├── train_student.py             #   RandomForest distillation from teacher
+│   │   ├── eval_student.py              #   Student evaluation
+│   │   └── export_student.py            #   Pi deployment export
 │   ├── eval/                             # Evaluation framework
 │   │   ├── metrics.py                    #   Coherence, diversity, accuracy metrics
-│   │   └── baseline.py                   #   3 baseline conditions (random, matched, prompted)
+│   │   └── baseline.py                   #   3 baseline conditions
 │   ├── synthetic/                        # Data augmentation
 │   │   └── trajectory_generator.py       #   Synthetic trajectories for all 9 shapes
 │   ├── bridge/                           # Integration layer
@@ -254,8 +287,12 @@ eisv-lumen/
 │   └── scripts/                          # CLI tools
 │       ├── full_evaluation.py            #   Full evaluation + go/no-go gate
 │       └── publish_dataset.py            #   Dataset publisher
+├── scripts/                              # Visualization + utilities
+│   ├── generate_figure1_trajectory_comparison.py
+│   └── generate_figure3_coherence_comparison.py
 ├── tests/                                # 263 tests
-└── docs/plans/                           # Design + implementation plans
+├── docs/                                 # Blog post draft, specs, handoff notes
+└── outputs/                              # Eval results + student models
 ```
 
 ---
@@ -329,9 +366,10 @@ Apache 2.0. See [LICENSE](LICENSE).
   author  = {hikewa},
   year    = {2026},
   url     = {https://github.com/CIRWEL/eisv-lumen},
-  note    = {Rule-based trajectory-to-expression system achieving 0.503 coherence
-             (0.933 with feedback) on 21,449 real Lumen trajectories.
-             Part of the UNITARES governance framework.}
+  note    = {Three-layer trajectory-to-expression system: rule-based Layer 2
+             achieves 0.933 coherence, LoRA fine-tuned teacher reaches 0.952
+             on 21,449 real Lumen trajectories. Includes distilled student
+             for Pi deployment. Part of the UNITARES governance framework.}
 }
 ```
 

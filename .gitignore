@@ -48,10 +48,16 @@ outputs/teacher_lora_v3/
 outputs/teacher_lora_v4/
 outputs/teacher_lora_v5/
 outputs/teacher_lora_v6/
+outputs/student/
+outputs/student_small/
 *.safetensors
 
 # Training logs (reproducible)
 outputs/*.log
+
+# Training data (reproducible from anima.db)
+data/training_v*/
+data/distillation/
 
 # Weights & Biases
 wandb/
