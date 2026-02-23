@@ -1,0 +1,5 @@
+gradio>=5.0
+matplotlib
+numpy
+datasets
+huggingface_hub
