@@ -269,8 +269,12 @@ class TestArgparseDefaults:
     """Tests for CLI argument defaults."""
 
     def test_default_db_path(self):
-        """Default db_path matches the constant."""
-        assert DEFAULT_DB_PATH == "/Users/cirwel/.anima/anima.db"
+        """Default db_path resolves to ~/.anima/anima.db when ANIMA_DB is unset."""
+        import os
+        from pathlib import Path
+
+        expected = os.path.join(Path.home(), ".anima", "anima.db")
+        assert DEFAULT_DB_PATH == os.environ.get("ANIMA_DB", expected)
 
     def test_default_repo_id(self):
         """Default repo_id matches the constant."""

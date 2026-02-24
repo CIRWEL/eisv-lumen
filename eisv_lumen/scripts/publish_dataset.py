@@ -11,8 +11,10 @@ Usage:
 from __future__ import annotations
 
 import json
+import os
 import sys
 from collections import Counter
+from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
 from eisv_lumen.extract.assembler import assemble_dataset
@@ -20,7 +22,7 @@ from eisv_lumen.extract.lumen_expressions import extract_primitive_history
 from eisv_lumen.extract.lumen_states import extract_state_history
 from eisv_lumen.shapes.shape_classes import TrajectoryShape
 
-DEFAULT_DB_PATH = "/Users/cirwel/.anima/anima.db"
+DEFAULT_DB_PATH = os.environ.get("ANIMA_DB", os.path.join(Path.home(), ".anima", "anima.db"))
 DEFAULT_REPO_ID = "hikewa/unitares-eisv-trajectories"
 
 ALL_SHAPE_VALUES = [s.value for s in TrajectoryShape]

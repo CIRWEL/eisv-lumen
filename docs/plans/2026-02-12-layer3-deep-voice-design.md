@@ -1,8 +1,10 @@
 # Layer 3: Fine-Tuned Deep Voice — Design Document
 
 **Date:** 2026-02-12
-**Status:** Approved
+**Status:** Phase 1 complete, Phase 2 partial, Phase 3 not started
 **Approach:** Staged Hybrid (Teacher → Distill → Deploy)
+
+> **Note (Feb 2026):** Teacher model was switched from Llama-3.2-1B to Qwen3-4B during development. V6 teacher achieves 0.952 coherence on real data (Gate 1 passed). Student distilled to RandomForest (not micro-transformer). References below reflect the original design; see blog post and README for current state.
 
 ## Overview
 
@@ -18,7 +20,7 @@ Layer 3 replaces the rule-based expression generator (Layer 2) with a learned mo
 
 ```
 Phase 1: Teacher (Mac)          Phase 2: Student (Mac)         Phase 3: Deploy (Pi)
-Llama-3.2-1B + LoRA    →    8M param micro-transformer   →    ONNX on Pi Zero 2W
+Llama-3.2-1B + LoRA    →    8M param micro-transformer   →    ONNX on Raspberry Pi 4
 Train on 30-50K examples      Distill from teacher              Confidence-gated fallback
                               ↓                                  ↓
                          Gate 1: >0.933 coherence          Gate 2: ≥90% teacher quality
@@ -146,7 +148,7 @@ anima-mcp server loop (~60s)
 | Diversity | Shannon entropy of token distributions |
 | Bridge fidelity | EISV→Lumen translation matches model's direct Lumen output |
 | Temporal consistency | Expression stability across consecutive same-shape windows |
-| Pi latency | Inference time on Pi Zero 2W |
+| Pi latency | Inference time on Raspberry Pi 4 |
 
 **Evaluation table (targets):**
 
@@ -166,7 +168,7 @@ anima-mcp server loop (~60s)
 **Paper contributions:**
 1. Thermodynamic trajectory conditioning for embodied expression
 2. Knowledge distillation from rule-based to neural system
-3. Edge deployment of micro-transformer on Pi Zero 2W
+3. Edge deployment of micro-transformer on Raspberry Pi 4
 4. Hierarchical expression generation with intermediate reasoning tokens
 
 ## File Structure

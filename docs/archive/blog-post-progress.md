@@ -88,7 +88,7 @@ git clone + pip install + dataset download + train + eval + gate check
 ```
 
 ### 4. Deployed System Emphasized
-- Layer 2 (rule-based) runs in production on Pi Zero 2W
+- Layer 2 (rule-based) runs in production on Raspberry Pi 4
 - Layer 3 (neural) is research artifact showing the challenge
 - This frames the work as successful deployment + interesting research finding
 

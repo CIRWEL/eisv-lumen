@@ -1,13 +1,16 @@
 # EISV-Lumen
 
-[![Tests](https://img.shields.io/badge/tests-263%20passing-brightgreen)]()
+[![Tests](https://img.shields.io/badge/tests-369%20passing-brightgreen)]()
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue)]()
 [![License](https://img.shields.io/badge/license-Apache%202.0-orange)](LICENSE)
-[![Dataset](https://img.shields.io/badge/HuggingFace-unitares--eisv--trajectories-yellow)](https://huggingface.co/datasets/hikewa/unitares-eisv-trajectories)
+[![Dataset](https://img.shields.io/badge/HuggingFace-Dataset-yellow)](https://huggingface.co/datasets/hikewa/unitares-eisv-trajectories)
+[![Teacher](https://img.shields.io/badge/HuggingFace-Teacher_Model-yellow)](https://huggingface.co/hikewa/eisv-lumen-teacher)
+[![Student](https://img.shields.io/badge/HuggingFace-Student_Model-yellow)](https://huggingface.co/hikewa/eisv-lumen-student)
+[![Demo](https://img.shields.io/badge/HuggingFace-Explorer_Demo-yellow)](https://huggingface.co/spaces/hikewa/eisv-lumen-explorer)
 
 **Dynamics-emergent voice and governance benchmark for embodied AI.**
 
-EISV-Lumen is a three-layer system that generates primitive expressions from thermodynamic governance trajectories. It classifies continuous EISV (Energy, Information Integrity, Entropy, Void) dynamics into 9 trajectory shape classes and maps them to contextually coherent expressions through rule-based, neural, and distilled approaches. Evaluated on 21,449 real trajectory records from [Lumen](https://github.com/CIRWEL/anima-mcp) -- an embodied AI agent running on a Raspberry Pi within the [UNITARES](https://github.com/CIRWEL) governance framework -- the rule-based Layer 2 achieves 0.933 coherence with an online feedback loop, while the fine-tuned Layer 3 teacher (LoRA on Qwen3-4B) reaches 0.952 coherence on real data. A distilled RandomForest student model runs on-device on Lumen's Pi Zero 2W.
+EISV-Lumen is a three-layer system that generates primitive expressions from thermodynamic governance trajectories. It classifies continuous EISV (Energy, Information Integrity, Entropy, Void) dynamics into 9 trajectory shape classes and maps them to contextually coherent expressions through rule-based, neural, and distilled approaches. Evaluated on 21,449 real trajectory records from [Lumen](https://github.com/CIRWEL/anima-mcp) -- an embodied AI agent running on a Raspberry Pi within the [UNITARES](https://github.com/CIRWEL) governance framework -- the rule-based Layer 2 achieves 0.933 coherence with an online feedback loop, while the fine-tuned Layer 3 teacher (LoRA on Qwen3-4B) reaches 0.952 coherence on real data. A distilled RandomForest student model runs on-device on Lumen's Raspberry Pi 4.
 
 ---
 
@@ -50,7 +53,7 @@ Layer 1            Dataset + Benchmark + Evaluation Framework
 
 **Layer 2** is the primary research contribution: a dynamics-emergent expression generator that maps trajectory shapes to primitive token expressions through shape-driven pattern selection and affinity-weighted sampling -- no gradient descent, no learned embeddings, fully inspectable.
 
-**Layer 3** fine-tunes Qwen3-4B via LoRA on trajectory-expression pairs. The V6 teacher achieves 0.952 coherence on real Lumen data (exceeding the 0.933 Gate 1 threshold). A RandomForest student model is distilled from the teacher for on-device deployment on Lumen's Pi Zero 2W.
+**Layer 3** fine-tunes Qwen3-4B via LoRA on trajectory-expression pairs. The V6 teacher achieves 0.952 coherence on real Lumen data (exceeding the 0.933 Gate 1 threshold). A RandomForest student model is distilled from the teacher for on-device deployment on Lumen's Raspberry Pi 4.
 
 ---
 
@@ -185,7 +188,7 @@ Per-shape coherence on real Lumen trajectories:
 
 ### Key Numbers
 
-- **263 tests**, all passing
+- **369 tests**, all passing
 - **21,499 total trajectory records** (21,449 real + 50 synthetic)
 - **8 of 9** trajectory shapes observed in real data
 - Layer 2: **0.933** coherence (rule-based + feedback)
@@ -267,10 +270,15 @@ eisv-lumen/
 │   │   └── expression_generator.py       #   Dynamics-emergent voice (primary contribution)
 │   ├── training/                         # Layer 3: Teacher fine-tuning
 │   │   ├── trainer.py                    #   LoRA training loop
+│   │   ├── teacher_train.py             #   Teacher training entry point
 │   │   ├── teacher_eval.py              #   Evaluation on real data
 │   │   ├── teacher_inference.py         #   Inference utilities
 │   │   ├── dataset_builder.py           #   Training data preparation
-│   │   └── configs/                     #   Training YAML configs (v3-v6)
+│   │   ├── data_prep.py                 #   Data preprocessing pipeline
+│   │   ├── chat_format.py               #   Chat template formatting
+│   │   ├── config.py                    #   Training configuration
+│   │   ├── cli.py                       #   CLI interface for training
+│   │   └── configs/                     #   Training YAML configs (v2-v7)
 │   ├── distillation/                    # Layer 3: Student distillation
 │   │   ├── train_student.py             #   RandomForest distillation from teacher
 │   │   ├── eval_student.py              #   Student evaluation
@@ -286,12 +294,16 @@ eisv-lumen/
 │   │   └── hf_dataset.py                 #   HuggingFace format + dataset card
 │   └── scripts/                          # CLI tools
 │       ├── full_evaluation.py            #   Full evaluation + go/no-go gate
-│       └── publish_dataset.py            #   Dataset publisher
+│       ├── publish_dataset.py            #   Dataset publisher
+│       └── publish_model.py              #   HuggingFace model publisher
 ├── scripts/                              # Visualization + utilities
 │   ├── generate_figure1_trajectory_comparison.py
-│   └── generate_figure3_coherence_comparison.py
-├── tests/                                # 263 tests
-├── docs/                                 # Blog post draft, specs, handoff notes
+│   ├── generate_figure3_coherence_comparison.py
+│   ├── eval_on_real_data.py              #   Evaluate on real anima.db
+│   ├── generate_distillation_data.py     #   Generate teacher → student data
+│   └── prepare_blended_data.py           #   Blend real + synthetic data
+├── tests/                                # 369 tests
+├── docs/                                 # Blog post draft, specs, archived notes
 └── outputs/                              # Eval results + student models
 ```
 

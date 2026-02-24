@@ -8,6 +8,17 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Union
 
 
+def _parse_feedback(raw: Optional[str]) -> dict:
+    """Parse feedback_signals which may be JSON or comma-separated strings."""
+    if not raw:
+        return {}
+    try:
+        return json.loads(raw)
+    except (json.JSONDecodeError, TypeError):
+        # Legacy format: comma-separated signal names
+        return {"signals": [s.strip() for s in raw.split(",") if s.strip()]}
+
+
 def extract_primitive_history(
     db_path: Union[str, Path],
     *,
@@ -83,9 +94,7 @@ def extract_primitive_history(
                     "presence": row["presence"],
                 },
                 "score": row["score"],
-                "feedback_signals": (
-                    json.loads(feedback_raw) if feedback_raw else {}
-                ),
+                "feedback_signals": _parse_feedback(feedback_raw),
             }
         )
 

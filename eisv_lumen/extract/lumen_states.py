@@ -28,6 +28,16 @@ def anima_to_eisv(
         V (Void)      = (1.0 - presence) * 0.3
 
     All values are clamped to [0.0, 1.0].
+
+    Note: Equation Contract
+    -----------------------
+    These are the **base scalar mappings** with no neural band blending.
+    The live system (anima-mcp ``eisv_mapper.py``) extends E and I with
+    neural band blending when neural data is available.  The anima.db
+    ``state_history`` table stores pre-blend anima scalars, so this base
+    mapping is correct for offline extraction from the database.
+
+    Canonical pure-scalar source: ``anima-mcp/src/anima_mcp/eisv/mapping.py``
     """
     return {
         "E": _clamp(warmth),

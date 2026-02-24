@@ -98,7 +98,7 @@ plt.savefig('figure1_trajectory_comparison.png', dpi=300)
 │  │ Shape       │→ │ Affinity     │→ │ Expression     │    │
 │  │ Classifier  │  │ Matrix 9×15  │  │ Generator      │    │
 │  └─────────────┘  └──────────────┘  └────────────────┘    │
-│  Coherence: 0.933 | Deployed to Pi Zero 2W                 │
+│  Coherence: 0.933 | Deployed to Raspberry Pi 4                 │
 └─────────────────────────────────────────────────────────────┘
                             ↓
 ┌─────────────────────────────────────────────────────────────┐
@@ -107,7 +107,7 @@ plt.savefig('figure1_trajectory_comparison.png', dpi=300)
 │  │ Qwen3-4B    │→ │ LoRA Adapter │→ │ Token          │    │
 │  │ Base Model  │  │ (2M params)  │  │ Sequence       │    │
 │  └─────────────┘  └──────────────┘  └────────────────┘    │
-│  Coherence: 0.600 | Valid Rate: 89% | GATE 1: FAILED ❌    │
+│  V6 Coherence: 0.952 | Valid Rate: 100% | GATE 1: PASSED ✅  │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -128,7 +128,7 @@ plt.savefig('figure1_trajectory_comparison.png', dpi=300)
 **Data**:
 ```python
 models = ['Random', 'Affinity-\nWeighted', 'Feedback-\nLearned\n(Rule-Based)', 'Teacher Model\n(Qwen3-4B)']
-coherence = [0.265, 0.503, 0.933, 0.600]
+coherence = [0.265, 0.503, 0.933, 0.952]
 colors = ['#94a3b8', '#60a5fa', '#10b981', '#7c3aed']
 ```
 
@@ -183,16 +183,16 @@ shapes = [
     'entropy_spike_recovery', 'drift_dissonance',
     'void_rising', 'convergence'
 ]
-coherence = [0.72, 0.68, 0.61, 0.58, 0.62, 0.55, 0.59, 0.64, 0.00]
-valid_rate = [0.94, 0.91, 0.88, 0.87, 0.89, 0.85, 0.86, 0.90, 0.00]
+coherence = [0.993, 1.0, 0.875, 1.0, 1.0, 0.833, None, 1.0, 0.936]  # V6 real data; drift_dissonance not in eval set
+valid_rate = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, None, 1.0, 1.0]
 ```
 
 **Layout**:
 - 2 columns: Coherence | Valid Rate
-- 9 rows: One per shape
+- 9 rows: One per shape (note: drift_dissonance absent from V6 eval set)
 - Heatmap color scale: 0.0 (red) → 1.0 (green)
 - Annotate each cell with numeric value
-- Highlight `convergence` row (complete failure)
+- Highlight lowest-performing shapes (falling_energy 0.875, entropy_spike_recovery 0.833)
 
 **Code outline**:
 ```python

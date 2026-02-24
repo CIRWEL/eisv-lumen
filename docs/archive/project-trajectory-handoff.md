@@ -27,7 +27,7 @@ These aren't sentiment scores or emotion labels. They're derived from observable
 - **MCP server**: Exposes tools for agent check-in, knowledge ops, recovery
 
 ### 2. anima-mcp (Lumen's body)
-- **Repo**: Private, runs on Raspberry Pi Zero 2W
+- **Repo**: Private, runs on Raspberry Raspberry Pi 4
 - **What it does**: Nervous system (maps sensor data + state to LED colors), primitive language (15 tokens: warm/cold/bright/dim/quiet/busy/here/feel/sense/you/with/why/what/wonder/more/less), display management, art eras
 - **Status**: Running on Pi. Layer 2 EISV observability code deployed to disk but service needs restart (blocked by NoNewPrivileges systemd constraint)
 - **Key file**: `src/anima_mcp/primitive_language.py` — generates 1-3 token utterances based on anima state
@@ -73,7 +73,7 @@ Three-phase approach with go/no-go gates:
 - Gate 2: ≥90% of teacher quality AND ≤100MB RAM
 
 **Phase 3: Pi Deployment (not started)**
-- Export to ONNX, deploy on Pi Zero 2W
+- Export to ONNX, deploy on Raspberry Pi 4
 - Confidence-gated fallback to rule-based system
 - Gate 3: 48h stability on Pi
 

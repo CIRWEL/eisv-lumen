@@ -12,9 +12,11 @@ Usage:
 from __future__ import annotations
 
 import json
+import os
 import sys
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any, Dict, List
 
 from eisv_lumen.eval.baseline import BaselineCondition, evaluate_baseline
@@ -25,7 +27,7 @@ from eisv_lumen.extract.lumen_states import extract_state_history
 from eisv_lumen.shapes.expression_generator import ExpressionGenerator
 from eisv_lumen.shapes.shape_classes import TrajectoryShape
 
-DEFAULT_DB_PATH = "/Users/cirwel/.anima/anima.db"
+DEFAULT_DB_PATH = os.environ.get("ANIMA_DB", os.path.join(Path.home(), ".anima", "anima.db"))
 
 ALL_SHAPE_VALUES = [s.value for s in TrajectoryShape]
 

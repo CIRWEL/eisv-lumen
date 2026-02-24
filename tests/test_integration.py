@@ -10,9 +10,11 @@ Run with: python3 -m pytest tests/test_integration.py -v -s -m integration
 
 import os
 import json
+from pathlib import Path
+
 import pytest
 
-ANIMA_DB = "/Users/cirwel/.anima/anima.db"
+ANIMA_DB = os.environ.get("ANIMA_DB", os.path.join(Path.home(), ".anima", "anima.db"))
 SKIP_REASON = "anima.db not found at expected path"
 
 pytestmark = [

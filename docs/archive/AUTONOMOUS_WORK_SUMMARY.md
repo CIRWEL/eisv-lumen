@@ -24,7 +24,7 @@ Following your instruction to "proceed autonomously on your own accord," I compl
 1. **Gap as structured findings** — Four testable hypotheses (data mismatch, capacity, loss function, class imbalance)
 2. **Design principles explicit** — Observable grounding, trajectory not state, graceful degradation, etc.
 3. **Quick start code** — 8-line bash script to reproduce training
-4. **Deployed system emphasized** — Layer 2 running on Pi Zero 2W in production
+4. **Deployed system emphasized** — Layer 2 running on Raspberry Pi 4 in production
 5. **Intellectual honesty** — Admits Gate 1 failure, documents dataset flaws, proposes hybrid architectures
 
 ### Appendices Added:
