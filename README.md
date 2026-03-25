@@ -1,6 +1,6 @@
 # EISV-Lumen
 
-[![Tests](https://img.shields.io/badge/tests-369%20passing-brightgreen)]()
+[![Tests](https://img.shields.io/badge/tests-399%20passing-brightgreen)]()
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue)]()
 [![License](https://img.shields.io/badge/license-Apache%202.0-orange)](LICENSE)
 [![Dataset](https://img.shields.io/badge/HuggingFace-Dataset-yellow)](https://huggingface.co/datasets/hikewa/unitares-eisv-trajectories)
@@ -10,7 +10,15 @@
 
 **Dynamics-emergent voice and governance benchmark for embodied AI.**
 
-EISV-Lumen is a three-layer system that generates primitive expressions from thermodynamic governance trajectories. It classifies continuous EISV (Energy, Information Integrity, Entropy, Void) dynamics into 9 trajectory shape classes and maps them to contextually coherent expressions through rule-based, neural, and distilled approaches. Evaluated on 21,449 real trajectory records from [Lumen](https://github.com/CIRWEL/anima-mcp) -- an embodied AI agent running on a Raspberry Pi within the [UNITARES](https://github.com/CIRWEL) governance framework -- the rule-based Layer 2 achieves 0.933 coherence with an online feedback loop, while the fine-tuned Layer 3 teacher (LoRA on Qwen3-4B) reaches 0.952 coherence on real data. A distilled RandomForest student model runs on-device on Lumen's Raspberry Pi 4.
+EISV-Lumen is a three-layer system that generates primitive expressions from thermodynamic governance trajectories. It classifies continuous EISV (Energy, Information Integrity, Entropy, Void) dynamics into 9 trajectory shape classes and maps them to contextually coherent expressions through rule-based, neural, and distilled approaches. Evaluated on real trajectory records from [Lumen](https://github.com/CIRWEL/anima-mcp) (21,449 at time of publication; the [live HuggingFace dataset](https://huggingface.co/datasets/hikewa/unitares-eisv-trajectories) grows as Lumen runs) -- an embodied AI agent running on a Raspberry Pi within the [UNITARES](https://github.com/CIRWEL/unitares) governance framework -- the rule-based Layer 2 achieves 0.933 coherence with an online feedback loop, while the fine-tuned Layer 3 teacher (LoRA on Qwen3-4B) reaches 0.952 coherence on real data. A distilled RandomForest student model runs on-device on Lumen's Raspberry Pi 4. Three student variants are available:
+
+| Variant | Trees | Format | Size | Dependencies |
+|---------|-------|--------|------|--------------|
+| `student_tiny` | 20 | JSON | ~2.4 MB | None (stdlib only) |
+| `student_small` | 100 | pickle | ~23 MB | scikit-learn |
+| `student` | 200 | pickle | ~221 MB | scikit-learn |
+
+The **deployed version on Lumen's Pi** is `student_tiny` — 20 JSON-serialized decision trees with zero external dependencies.
 
 ---
 
@@ -152,7 +160,7 @@ The system uses 15 primitive tokens:
 
 ## Evaluation Results
 
-Full evaluation on real Lumen data (21,449 trajectory records from 214,503 state snapshots, 921 primitive expressions):
+Full evaluation on real Lumen data (21,449 trajectory records at time of publication, from 214,503 state snapshots, 921 primitive expressions):
 
 ### Layer 2 — Rule-Based Coherence
 
@@ -188,12 +196,13 @@ Per-shape coherence on real Lumen trajectories:
 
 ### Key Numbers
 
-- **369 tests**, all passing
-- **21,499 total trajectory records** (21,449 real + 50 synthetic)
+- **399 tests**, all passing
+- **21,499 total trajectory records** (21,449 real + 50 synthetic, at time of publication)
 - **8 of 9** trajectory shapes observed in real data
 - Layer 2: **0.933** coherence (rule-based + feedback)
 - Layer 3: **0.952** coherence (V6 teacher on real data)
 - Student distillation: RandomForest models for Pi deployment
+- Deployed student uses **20-tree JSON variant** (`student_tiny`, ~2.4 MB) — not the 200-tree default
 - **Go/no-go gate: GO** -- all three criteria passed:
   - Beats random by > 5pp
   - At least 3 distinct shapes observed
@@ -302,7 +311,7 @@ eisv-lumen/
 │   ├── eval_on_real_data.py              #   Evaluate on real anima.db
 │   ├── generate_distillation_data.py     #   Generate teacher → student data
 │   └── prepare_blended_data.py           #   Blend real + synthetic data
-├── tests/                                # 369 tests
+├── tests/                                # 399 tests
 ├── docs/                                 # Blog post draft, specs, archived notes
 └── outputs/                              # Eval results + student models
 ```
@@ -387,4 +396,4 @@ Apache 2.0. See [LICENSE](LICENSE).
 
 ---
 
-*EISV-Lumen is part of the [UNITARES](https://github.com/CIRWEL) framework for thermodynamic AI governance.*
+*EISV-Lumen is part of the [UNITARES](https://github.com/CIRWEL/unitares) framework for thermodynamic AI governance.*
