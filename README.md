@@ -396,4 +396,4 @@ Apache 2.0. See [LICENSE](LICENSE).
 
 ---
 
-*EISV-Lumen is part of the [UNITARES](https://github.com/CIRWEL/unitares) framework for thermodynamic AI governance.*
+*EISV-Lumen is part of the [UNITARES](https://github.com/CIRWEL/unitares) framework for information-theoretic AI governance.*
