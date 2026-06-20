@@ -10,7 +10,7 @@
 
 **Dynamics-emergent voice and governance benchmark for embodied AI.**
 
-EISV-Lumen is a three-layer system that generates primitive expressions from information-theoretic governance trajectories. It classifies continuous EISV (Energy, Information Integrity, Entropy, Void) dynamics into 9 trajectory shape classes and maps them to contextually coherent expressions through rule-based, neural, and distilled approaches. Evaluated on real trajectory records from [Lumen](https://github.com/CIRWEL/anima-mcp) (21,449 at time of publication; the [live HuggingFace dataset](https://huggingface.co/datasets/hikewa/unitares-eisv-trajectories) grows as Lumen runs) -- an embodied AI agent running on a Raspberry Pi within the [UNITARES](https://github.com/CIRWEL/unitares) governance framework -- the rule-based Layer 2 achieves 0.933 coherence with an online feedback loop, while the fine-tuned Layer 3 teacher (LoRA on Qwen3-4B) reaches 0.952 coherence on real data. A distilled RandomForest student model runs on-device on Lumen's Raspberry Pi 4. Three student variants are available:
+EISV-Lumen is a three-layer system that generates primitive expressions from information-theoretic governance trajectories. It classifies continuous EISV (Energy, Information Integrity, Entropy, Void) dynamics into 9 trajectory shape classes and maps them to contextually coherent expressions through rule-based, neural, and distilled approaches. Evaluated on real trajectory records from [Lumen](https://github.com/CIRWEL/anima-mcp) (20,655 at the current Hub revision; the [live HuggingFace dataset](https://huggingface.co/datasets/hikewa/unitares-eisv-trajectories) grows as Lumen runs) -- an embodied AI agent running on a Raspberry Pi within the [UNITARES](https://github.com/CIRWEL/unitares) governance framework -- the rule-based Layer 2 achieves 0.933 coherence with an online feedback loop, while the fine-tuned Layer 3 teacher (LoRA on Qwen3-4B) reaches 0.952 coherence on real data. A distilled RandomForest student model runs on-device on Lumen's Raspberry Pi 4. Three student variants are available:
 
 | Variant | Trees | Format | Size | Dependencies |
 |---------|-------|--------|------|--------------|
@@ -86,14 +86,14 @@ Each trajectory window is classified into one of 9 dynamical shapes using a prio
 
 | Shape | Description | Real Data % | Distinguishing Feature |
 |-------|-------------|-------------|----------------------|
-| settled_presence | Stable state, low variance | 47.19% | All derivatives near zero, system at attractor |
-| convergence | Approaching equilibrium | 41.45% | Small derivatives and second derivatives, nonzero dynamics |
-| entropy_spike_recovery | Entropy spike then recovery | 4.91% | Entropy range >= 0.2 with interior maximum |
-| basin_transition_up | Sharp energy increase | 1.71% | Energy range >= 0.2, positive mean dE |
-| rising_entropy | Entropy increasing | 1.49% | Mean dS > 0.05 |
-| basin_transition_down | Sharp energy decrease | 1.47% | Energy range >= 0.2, negative mean dE |
-| falling_energy | Energy declining | 1.45% | Mean dE < -0.05 |
-| void_rising | Void state increasing | 0.34% | Mean dV > 0.05 |
+| settled_presence | Stable state, low variance | 48.86% | All derivatives near zero, system at attractor |
+| convergence | Approaching equilibrium | 39.16% | Small derivatives and second derivatives, nonzero dynamics |
+| entropy_spike_recovery | Entropy spike then recovery | 5.19% | Entropy range >= 0.2 with interior maximum |
+| basin_transition_up | Sharp energy increase | 1.81% | Energy range >= 0.2, positive mean dE |
+| basin_transition_down | Sharp energy decrease | 1.57% | Energy range >= 0.2, negative mean dE |
+| rising_entropy | Entropy increasing | 1.55% | Mean dS > 0.05 |
+| falling_energy | Energy declining | 1.50% | Mean dE < -0.05 |
+| void_rising | Void state increasing | 0.35% | Mean dV > 0.05 |
 | drift_dissonance | Sustained integrity fluctuation | 0% | Ethical drift > 0.3 (synthetic only) |
 
 8 of 9 shapes are observed in real Lumen data. The `drift_dissonance` shape has not yet been observed organically and is represented only through synthetic augmentation.
@@ -160,7 +160,7 @@ The system uses 15 primitive tokens:
 
 ## Evaluation Results
 
-Full evaluation on real Lumen data (21,449 trajectory records at time of publication, from 214,503 state snapshots, 921 primitive expressions):
+Full evaluation on real Lumen data (20,655 real trajectory records at the current Hub revision; 32,181 total with synthetic class-balancing augmentation; 3,681 aligned primitive expressions):
 
 ### Layer 2 — Rule-Based Coherence
 
@@ -197,7 +197,7 @@ Per-shape coherence on real Lumen trajectories:
 ### Key Numbers
 
 - **399 tests**, all passing
-- **21,499 total trajectory records** (21,449 real + 50 synthetic, at time of publication)
+- **32,181 total trajectory records** (20,655 real + 11,526 synthetic, at the current Hub revision)
 - **8 of 9** trajectory shapes observed in real data
 - Layer 2: **0.933** coherence (rule-based + feedback)
 - Layer 3: **0.952** coherence (V6 teacher on real data)
@@ -389,7 +389,7 @@ Apache 2.0. See [LICENSE](LICENSE).
   url     = {https://github.com/CIRWEL/eisv-lumen},
   note    = {Three-layer trajectory-to-expression system: rule-based Layer 2
              achieves 0.933 coherence, LoRA fine-tuned teacher reaches 0.952
-             on 21,449 real Lumen trajectories. Includes distilled student
+             on 20,655 real Lumen trajectories. Includes distilled student
              for Pi deployment. Part of the UNITARES governance framework.}
 }
 ```
